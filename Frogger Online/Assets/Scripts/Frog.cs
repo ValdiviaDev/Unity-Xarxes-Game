@@ -6,6 +6,8 @@ public class Frog : MonoBehaviour
     private Rigidbody2D rb = null;
     public Animator animator;
 
+    AudioSource audio;
+
     public float limit_down = -6.0f;
     public float limit_left = -8.73f;
     public float limit_right = 6.25f;
@@ -17,10 +19,11 @@ public class Frog : MonoBehaviour
 
     private float aux_time = 0.0f;
     private string direction = "none";
-
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        audio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -37,6 +40,7 @@ public class Frog : MonoBehaviour
                 animator.SetFloat("h_speed", 1);
                 aux_time = jump_time;
                 direction = "up";
+                audio.Play();
             }
 
             else if (Input.GetKeyDown(KeyCode.DownArrow) && transform.position.y > limit_down)
@@ -45,16 +49,16 @@ public class Frog : MonoBehaviour
                 animator.SetFloat("h_speed", -1);
                 aux_time = jump_time;
                 direction = "down";
+                audio.Play();
             }
 
             else if (Input.GetKeyDown(KeyCode.LeftArrow) && transform.position.x > limit_left)
             {
                 //rb.MovePosition(rb.position + Vector2.left * movement_space);
                 animator.SetFloat("speed", -1);
-
                 aux_time = jump_time;
                 direction = "left";
-
+                audio.Play();
             }
 
             else if (Input.GetKeyDown(KeyCode.RightArrow) && transform.position.x < limit_right)
@@ -63,7 +67,7 @@ public class Frog : MonoBehaviour
                 animator.SetFloat("speed", 1);
                 aux_time = jump_time;
                 direction = "right";
-
+                audio.Play();
             }
 
         }
