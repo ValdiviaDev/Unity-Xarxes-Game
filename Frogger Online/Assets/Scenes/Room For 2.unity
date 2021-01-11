@@ -188,6 +188,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
+    - target: {fileID: 588187832231286362, guid: ad8a8e7c2aafca54a9101c5e06ab8344,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 588187832231286362, guid: ad8a8e7c2aafca54a9101c5e06ab8344,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 588187832231286362, guid: ad8a8e7c2aafca54a9101c5e06ab8344,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 588187832231286363, guid: ad8a8e7c2aafca54a9101c5e06ab8344,
         type: 3}
       propertyPath: dist
@@ -198,6 +213,11 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1575063310}
+    - target: {fileID: 588187832231286363, guid: ad8a8e7c2aafca54a9101c5e06ab8344,
+        type: 3}
+      propertyPath: layer.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad8a8e7c2aafca54a9101c5e06ab8344, type: 3}
 --- !u!95 &648672189 stripped
@@ -438,11 +458,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2
       objectReference: {fileID: 0}
+    - target: {fileID: 588187832231286361, guid: ad8a8e7c2aafca54a9101c5e06ab8344,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 588187832231286363, guid: ad8a8e7c2aafca54a9101c5e06ab8344,
         type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 648672189}
+    - target: {fileID: 588187832231286363, guid: ad8a8e7c2aafca54a9101c5e06ab8344,
+        type: 3}
+      propertyPath: layer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad8a8e7c2aafca54a9101c5e06ab8344, type: 3}
 --- !u!1 &1114053937

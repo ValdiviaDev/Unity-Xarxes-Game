@@ -33,6 +33,9 @@ public class Frog : MonoBehaviour
 
     private Vector2 new_pos;
 
+    public LayerMask layer;
+    public float ray_length = 2.0f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -41,6 +44,11 @@ public class Frog : MonoBehaviour
 
     void Update()
     {
+        Debug.DrawLine(transform.position, transform.position + Vector3.up * ray_length);
+        Debug.DrawLine(transform.position, transform.position + Vector3.down * ray_length);
+        Debug.DrawLine(transform.position, transform.position + Vector3.left * ray_length);
+        Debug.DrawLine(transform.position, transform.position + Vector3.right * ray_length);
+
         if (aux_time <= 0.0f)
         {
             animator.SetFloat("speed", 0.0f);
@@ -49,60 +57,81 @@ public class Frog : MonoBehaviour
             //Movement
             if (Input.GetKeyDown(KeyCode.UpArrow) && transform.position.y < limit_up && cant_move_to != dir.up)
             {
-                //Movement
-                dir_to_move = dir.up;
-                new_pos = rb.position + Vector2.up * v_dist;
+                //Raycast to look for other frog
+                RaycastHit2D ray = Physics2D.Raycast(transform.position, Vector2.up, ray_length, layer.value);
 
-                //Animation
-                animator.SetFloat("h_speed", 1);
-                aux_time = jump_time;
+                if(!ray)
+                {
+                    //Movement
+                    dir_to_move = dir.up;
+                    new_pos = rb.position + Vector2.up * v_dist;
 
-                //Audio
-                audio.Play();
-                
+                    //Animation
+                    animator.SetFloat("h_speed", 1);
+                    aux_time = jump_time;
+
+                    //Audio
+                    audio.Play();
+
+                }
             }
 
             else if (Input.GetKeyDown(KeyCode.DownArrow) && transform.position.y > limit_down && cant_move_to != dir.down)
             {
-                //Movement
-                dir_to_move = dir.down;
-                new_pos = rb.position + Vector2.down * v_dist;
+                RaycastHit2D ray = Physics2D.Raycast(transform.position, Vector2.down, ray_length, layer.value);
 
-                //Animation
-                animator.SetFloat("h_speed", -1);
-                aux_time = jump_time;
+                if (!ray)
+                {
+                    //Movement
+                    dir_to_move = dir.down;
+                    new_pos = rb.position + Vector2.down * v_dist;
 
-                //Audio
-                audio.Play();
+                    //Animation
+                    animator.SetFloat("h_speed", -1);
+                    aux_time = jump_time;
 
+                    //Audio
+                    audio.Play();
+                }
             }
 
             else if (Input.GetKeyDown(KeyCode.LeftArrow) && transform.position.x > limit_left && cant_move_to != dir.left)
             {
-                //Movement
-                dir_to_move = dir.left;
-                new_pos = rb.position + Vector2.left * dist;
+                //Raycast to look for other frog
+                RaycastHit2D ray = Physics2D.Raycast(transform.position, Vector2.left, ray_length, layer.value);
 
-                //Animation
-                animator.SetFloat("speed", -1);
-                aux_time = jump_time;
-                
-                //Audio
-                audio.Play();
+                if (!ray)
+                {
+                    //Movement
+                    dir_to_move = dir.left;
+                    new_pos = rb.position + Vector2.left * dist;
+
+                    //Animation
+                    animator.SetFloat("speed", -1);
+                    aux_time = jump_time;
+
+                    //Audio
+                    audio.Play();
+                }
             }
 
             else if (Input.GetKeyDown(KeyCode.RightArrow) && transform.position.x < limit_right && cant_move_to != dir.right)
             {
-                //Movement
-                dir_to_move = dir.right;
-                new_pos = rb.position + Vector2.right * dist;
+                RaycastHit2D ray = Physics2D.Raycast(transform.position, Vector2.right, ray_length, layer.value);
 
-                //Animation
-                animator.SetFloat("speed", 1);
-                aux_time = jump_time;
-                
-                //Audio
-                audio.Play();
+                if (!ray)
+                {
+                    //Movement
+                    dir_to_move = dir.right;
+                    new_pos = rb.position + Vector2.right * dist;
+
+                    //Animation
+                    animator.SetFloat("speed", 1);
+                    aux_time = jump_time;
+
+                    //Audio
+                    audio.Play();
+                }
             }
 
         }
