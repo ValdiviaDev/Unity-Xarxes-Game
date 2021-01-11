@@ -31,6 +31,8 @@ public class Frog : MonoBehaviour
     private dir dir_to_move = dir.none;
     public dir cant_move_to = dir.none;
 
+    private Vector2 new_pos;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -47,37 +49,59 @@ public class Frog : MonoBehaviour
             //Movement
             if (Input.GetKeyDown(KeyCode.UpArrow) && transform.position.y < limit_up && cant_move_to != dir.up)
             {
-                //rb.MovePosition(rb.position + Vector2.up * movement_space);
+                //Movement
+                dir_to_move = dir.up;
+                new_pos = rb.position + Vector2.up * v_dist;
+
+                //Animation
                 animator.SetFloat("h_speed", 1);
                 aux_time = jump_time;
-                dir_to_move = dir.up;
+
+                //Audio
                 audio.Play();
+                
             }
 
             else if (Input.GetKeyDown(KeyCode.DownArrow) && transform.position.y > limit_down && cant_move_to != dir.down)
             {
-                //rb.MovePosition(rb.position + Vector2.down * movement_space);
+                //Movement
+                dir_to_move = dir.down;
+                new_pos = rb.position + Vector2.down * v_dist;
+
+                //Animation
                 animator.SetFloat("h_speed", -1);
                 aux_time = jump_time;
-                dir_to_move = dir.down;
+
+                //Audio
                 audio.Play();
+
             }
 
             else if (Input.GetKeyDown(KeyCode.LeftArrow) && transform.position.x > limit_left && cant_move_to != dir.left)
             {
-                //rb.MovePosition(rb.position + Vector2.left * movement_space);
+                //Movement
+                dir_to_move = dir.left;
+                new_pos = rb.position + Vector2.left * dist;
+
+                //Animation
                 animator.SetFloat("speed", -1);
                 aux_time = jump_time;
-                dir_to_move = dir.left;
+                
+                //Audio
                 audio.Play();
             }
 
             else if (Input.GetKeyDown(KeyCode.RightArrow) && transform.position.x < limit_right && cant_move_to != dir.right)
             {
-                //rb.MovePosition(rb.position + Vector2.right * movement_space);
+                //Movement
+                dir_to_move = dir.right;
+                new_pos = rb.position + Vector2.right * dist;
+
+                //Animation
                 animator.SetFloat("speed", 1);
                 aux_time = jump_time;
-                dir_to_move = dir.right;
+                
+                //Audio
                 audio.Play();
             }
 
@@ -87,29 +111,19 @@ public class Frog : MonoBehaviour
         {
             aux_time -= Time.deltaTime;
 
-            if (dir_to_move == dir.down)
-            {
-                Vector2 new_pos = rb.position + Vector2.down * v_dist * Time.deltaTime;
-                rb.MovePosition(new Vector2(new_pos.x, Mathf.Clamp(new_pos.y, limit_down, limit_up)));
-            }
-            else if (dir_to_move == dir.up)
-            {
-                Vector2 new_pos = rb.position + Vector2.up * v_dist * Time.deltaTime;
-                rb.MovePosition(new Vector2(new_pos.x, Mathf.Clamp(new_pos.y, limit_down, limit_up)));
-                Debug.Log(new_pos);
-            }
-            else if (dir_to_move == dir.left)
-            {
-                Vector2 new_pos = rb.position + Vector2.left * dist * Time.deltaTime;
-                rb.MovePosition(new Vector2(Mathf.Clamp(new_pos.x, limit_left, limit_right), new_pos.y));
-            }
-            else if (dir_to_move == dir.right)
-            {
-                Vector2 new_pos = rb.position + Vector2.right * dist * Time.deltaTime;
-                rb.MovePosition(new Vector2(Mathf.Clamp(new_pos.x, limit_left, limit_right), new_pos.y));
-            }
-            
+            float time_norm = Mathf.Lerp(jump_time, 0.0f, aux_time);
+            Vector2 interPos = Vector2.Lerp(transform.position, new_pos, time_norm);
 
+            if (dir_to_move == dir.down || dir_to_move == dir.up)
+            {
+                rb.MovePosition(new Vector2(interPos.x, Mathf.Clamp(interPos.y, limit_down, limit_up)));
+            }
+
+            else if (dir_to_move == dir.left || dir_to_move == dir.right)
+            {
+                rb.MovePosition(new Vector2(Mathf.Clamp(interPos.x, limit_left, limit_right), interPos.y));
+            }
+     
             if (aux_time <= 0.0f)
                 dir_to_move = dir.none;
         }

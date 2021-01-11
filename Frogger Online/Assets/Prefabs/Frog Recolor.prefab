@@ -147,8 +147,8 @@ MonoBehaviour:
   limit_right: 6.25
   limit_up: 6
   jump_time: 0.5
-  dist: 5
-  v_dist: 5
+  dist: 1.3
+  v_dist: 1.3
   cant_move_to: 0
 --- !u!95 &588187832231286360
 Animator:
