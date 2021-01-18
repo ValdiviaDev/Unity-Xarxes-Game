@@ -406,8 +406,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
+    - target: {fileID: 588187832231286363, guid: ad8a8e7c2aafca54a9101c5e06ab8344,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 2131558438}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad8a8e7c2aafca54a9101c5e06ab8344, type: 3}
+--- !u!95 &2131558438 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 588187832231286360, guid: ad8a8e7c2aafca54a9101c5e06ab8344,
+    type: 3}
+  m_PrefabInstance: {fileID: 2131558437}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2466784205494234898
 PrefabInstance:
   m_ObjectHideFlags: 0
