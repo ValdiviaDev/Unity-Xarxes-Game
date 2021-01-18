@@ -15,7 +15,10 @@ GameObject:
   - component: {fileID: 588187832231286363}
   - component: {fileID: 588187832231286360}
   - component: {fileID: 2375069476737811487}
-  m_Layer: 8
+  - component: {fileID: 7445232957991595228}
+  - component: {fileID: 3273821743356244656}
+  - component: {fileID: 2101639294473525007}
+  m_Layer: 0
   m_Name: Frog Recolor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +140,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement_space: 1
-  animator: {fileID: 0}
   limit_down: -6
   limit_left: -8.73
   limit_right: 6.25
@@ -145,7 +147,6 @@ MonoBehaviour:
   jump_time: 0.25
   dist: 1.3
   v_dist: 1.3
-  cant_move_to: 0
   layer:
     serializedVersion: 2
     m_Bits: 0
@@ -265,3 +266,67 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7445232957991595228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588187832231286361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 3273821743356244656}
+  - {fileID: 2101639294473525007}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &3273821743356244656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588187832231286361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 0
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &2101639294473525007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588187832231286361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 1
+    SynchronizeType: 2
+    Name: speed
+  - Type: 1
+    SynchronizeType: 2
+    Name: h_speed
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0

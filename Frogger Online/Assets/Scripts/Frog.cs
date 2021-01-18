@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using Photon.Pun;
 
 public class Frog : MonoBehaviour
 {
     public int movement_space = 5;
     private Rigidbody2D rb = null;
-    public Animator animator;
+    private Animator animator;
 
     AudioSource audio;
 
@@ -29,17 +30,39 @@ public class Frog : MonoBehaviour
     };
 
     private dir dir_to_move = dir.none;
-    public dir cant_move_to = dir.none;
+    private dir cant_move_to = dir.none;
 
     private Vector2 new_pos;
 
     public LayerMask layer;
     public float ray_length = 2.0f;
 
+
+    [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
+    public static GameObject LocalPlayerInstance;
+
+    private PhotonView photonView;
+
+    private void Awake()
+    {
+        photonView = GetComponent<PhotonView>();
+
+        // #Important
+        // used in GameManager.cs: we keep track of the localPlayer instance to prevent instantiation when levels are synchronized
+        if (photonView.IsMine)
+        {
+            Frog.LocalPlayerInstance = this.gameObject;
+        }
+        // #Critical
+        // we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -48,6 +71,11 @@ public class Frog : MonoBehaviour
         Debug.DrawLine(transform.position, transform.position + Vector3.down * ray_length);
         Debug.DrawLine(transform.position, transform.position + Vector3.left * ray_length);
         Debug.DrawLine(transform.position, transform.position + Vector3.right * ray_length);
+
+        if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+        {
+            return;
+        }
 
         if (aux_time <= 0.0f)
         {
