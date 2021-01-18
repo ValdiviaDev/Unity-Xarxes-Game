@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7445232957991595228}
   - component: {fileID: 3273821743356244656}
   - component: {fileID: 2101639294473525007}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Frog Recolor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
