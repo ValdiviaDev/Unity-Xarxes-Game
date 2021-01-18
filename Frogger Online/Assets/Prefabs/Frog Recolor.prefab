@@ -142,10 +142,14 @@ MonoBehaviour:
   limit_left: -8.73
   limit_right: 6.25
   limit_up: 6
-  jump_time: 0.5
+  jump_time: 0.25
   dist: 1.3
   v_dist: 1.3
   cant_move_to: 0
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
+  ray_length: 2
 --- !u!95 &588187832231286360
 Animator:
   serializedVersion: 3
