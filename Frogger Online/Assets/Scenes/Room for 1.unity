@@ -214,8 +214,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402114182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.7941947, y: 2.389545, z: -232.39061}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -5.87, y: -6.264574, z: -2}
+  m_LocalScale: {x: 6.252312, y: 6.252312, z: 6.252312}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -546,6 +546,16 @@ PrefabInstance:
       propertyPath: player2Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 900341125881561065, guid: cb2516d05aca7c447900a4f01d745081,
+        type: 3}
+      propertyPath: player1Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 184f01332551b524ca46e8cb2eac4126, type: 2}
+    - target: {fileID: 900341125881561065, guid: cb2516d05aca7c447900a4f01d745081,
+        type: 3}
+      propertyPath: player2Material
+      value: 
+      objectReference: {fileID: 2100000, guid: ac60e4d00bd6a0349a79d1131f20a755, type: 2}
     - target: {fileID: 900341125881561065, guid: cb2516d05aca7c447900a4f01d745081,
         type: 3}
       propertyPath: layerPlayer1.m_Bits

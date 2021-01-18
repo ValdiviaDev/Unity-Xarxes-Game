@@ -27,8 +27,8 @@ namespace Com.Cotxe11.FroggerOnline
         public LayerMask layerPlayer1;
         public LayerMask layerPlayer2;
 
-        public Color player1Color;
-        public Color player2Color;
+        public Material player1Material;
+        public Material player2Material;
         #endregion
 
         #region MonoBehaviour CallBacks
@@ -49,13 +49,13 @@ namespace Com.Cotxe11.FroggerOnline
                     if (PhotonNetwork.IsMasterClient)
                     {
                         (tmp=PhotonNetwork.Instantiate(this.playerPrefab.name, player1Spawn.position, Quaternion.identity, 0)).GetComponent<Frog>().layer = layerPlayer2;
-                        tmp.GetComponent<SpriteRenderer>().material.color = player1Color;
+                        tmp.GetComponent<SpriteRenderer>().material = player1Material;
 
                     }
                     else
                     {
                         (tmp=PhotonNetwork.Instantiate(this.playerPrefab.name, player2Spawn.position, Quaternion.identity, 0)).GetComponent<Frog>().layer = layerPlayer1;
-                        tmp.GetComponent<SpriteRenderer>().material.color = player2Color;
+                        tmp.GetComponent<SpriteRenderer>().material = player2Material;
                     }
                 }
                 else

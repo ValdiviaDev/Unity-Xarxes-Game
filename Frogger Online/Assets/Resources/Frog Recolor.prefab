@@ -140,7 +140,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement_space: 1
-  animator: {fileID: 0}
   limit_down: -6
   limit_left: -8.73
   limit_right: 6.25
@@ -148,7 +147,6 @@ MonoBehaviour:
   jump_time: 0.25
   dist: 1.3
   v_dist: 1.3
-  cant_move_to: 0
   layer:
     serializedVersion: 2
     m_Bits: 0

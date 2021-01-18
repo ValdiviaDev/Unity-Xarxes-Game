@@ -45,6 +45,8 @@ public class Frog : MonoBehaviour
 
     private void Awake()
     {
+        photonView = GetComponent<PhotonView>();
+
         // #Important
         // used in GameManager.cs: we keep track of the localPlayer instance to prevent instantiation when levels are synchronized
         if (photonView.IsMine)
@@ -60,7 +62,6 @@ public class Frog : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
-        photonView = GetComponent<PhotonView>();
         animator = GetComponent<Animator>();
     }
 

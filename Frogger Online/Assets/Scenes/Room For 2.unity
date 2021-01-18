@@ -334,6 +334,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 900341125881561065, guid: cb2516d05aca7c447900a4f01d745081,
         type: 3}
+      propertyPath: player1Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 184f01332551b524ca46e8cb2eac4126, type: 2}
+    - target: {fileID: 900341125881561065, guid: cb2516d05aca7c447900a4f01d745081,
+        type: 3}
+      propertyPath: player2Material
+      value: 
+      objectReference: {fileID: 2100000, guid: ac60e4d00bd6a0349a79d1131f20a755, type: 2}
+    - target: {fileID: 900341125881561065, guid: cb2516d05aca7c447900a4f01d745081,
+        type: 3}
       propertyPath: layerPlayer1.m_Bits
       value: 256
       objectReference: {fileID: 0}
