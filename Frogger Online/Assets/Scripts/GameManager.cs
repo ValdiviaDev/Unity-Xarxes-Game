@@ -50,13 +50,13 @@ namespace Com.Cotxe11.FroggerOnline
                     {
                         (tmp=PhotonNetwork.Instantiate(this.playerPrefab.name, player1Spawn.position, Quaternion.identity, 0)).GetComponent<Frog>().layer = layerPlayer2;
                         tmp.GetComponent<SpriteRenderer>().material = player1Material;
-                        tmp.layer = layerPlayer1;
+                        tmp.layer = layerPlayer1.value;
                     }
                     else
                     {
                         (tmp=PhotonNetwork.Instantiate(this.playerPrefab.name, player2Spawn.position, Quaternion.identity, 0)).GetComponent<Frog>().layer = layerPlayer1;
                         tmp.GetComponent<SpriteRenderer>().material = player2Material;
-                        tmp.layer = layerPlayer2;
+                        tmp.layer = layerPlayer2.value;
                     }
                 }
                 else
