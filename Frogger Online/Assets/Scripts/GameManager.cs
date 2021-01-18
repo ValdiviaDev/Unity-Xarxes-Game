@@ -15,6 +15,59 @@ namespace Com.Cotxe11.FroggerOnline
     public class GameManager : MonoBehaviourPunCallbacks
     {
 
+        #region Public Variables
+
+
+        [Tooltip("The prefab to use for representing the player")]
+        public GameObject playerPrefab;
+
+        public Transform player1Spawn;
+        public Transform player2Spawn;
+
+        public LayerMask layerPlayer1;
+        public LayerMask layerPlayer2;
+
+        public Color player1Color;
+        public Color player2Color;
+        #endregion
+
+        #region MonoBehaviour CallBacks
+
+        private void Start()
+        {
+            if (playerPrefab == null)
+            {
+                Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'Game Manager'", this);
+            }
+            else
+            {
+                if (Frog.LocalPlayerInstance == null)
+                {
+                    Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
+                    // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
+                    GameObject tmp;
+                    if (PhotonNetwork.IsMasterClient)
+                    {
+                        (tmp=PhotonNetwork.Instantiate(this.playerPrefab.name, player1Spawn.position, Quaternion.identity, 0)).GetComponent<Frog>().layer = layerPlayer2;
+                        tmp.GetComponent<SpriteRenderer>().material.color = player1Color;
+
+                    }
+                    else
+                    {
+                        (tmp=PhotonNetwork.Instantiate(this.playerPrefab.name, player2Spawn.position, Quaternion.identity, 0)).GetComponent<Frog>().layer = layerPlayer1;
+                        tmp.GetComponent<SpriteRenderer>().material.color = player2Color;
+                    }
+                }
+                else
+                {
+                    Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
+                }
+            }
+        }
+
+        #endregion
+
+
 
         #region Photon Callbacks
 
