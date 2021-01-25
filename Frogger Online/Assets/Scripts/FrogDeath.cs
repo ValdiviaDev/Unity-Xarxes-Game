@@ -13,12 +13,6 @@ public class FrogDeath : MonoBehaviour
 
     private int num_of_floors = 0; //Counts num of floor colliders the frog collides with. If <=0 and touching water, then the frog dies
 
-    public LayerMask floor_layer;
-    public LayerMask water_layer;
-    public LayerMask enemy_layer;
-
-
-    
 
     // Start is called before the first frame update
     void Start()
@@ -79,7 +73,7 @@ public class FrogDeath : MonoBehaviour
             water = false;
         }
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer("FloorCol"))//&& !just_entered_floor)
+        if (collision.gameObject.layer == LayerMask.NameToLayer("FloorCol"))
         {
             floor = false;
             num_of_floors--;
