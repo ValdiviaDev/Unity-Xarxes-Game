@@ -32,7 +32,6 @@ public class InstantiateObj : MonoBehaviour
 
     void SpawnObjLeft()
     {
-        //TODO Valdivia: left and right spawns
         int randomIndex_l = Random.Range(0, spawnPoints_left.Length);
         Transform spawnPoint_l = spawnPoints_left[randomIndex_l];
 
@@ -43,7 +42,7 @@ public class InstantiateObj : MonoBehaviour
     void SpawnObjRight()
     {
         int randomIndex_r = Random.Range(0, spawnPoints_right.Length);
-        Transform spawnPoint_r = spawnPoints_left[randomIndex_r];
+        Transform spawnPoint_r = spawnPoints_right[randomIndex_r];
 
         Instantiate(obj_right, spawnPoint_r.position, spawnPoint_r.rotation);
     }
