@@ -11,6 +11,9 @@ public class MovingObj : MonoBehaviour
 
     private float speed = 1.0f;
 
+    private float timer_to_delete = 0.0f;
+    private float time_to_delete = 20.0f;
+
     public enum dir
     {
         Left,
@@ -27,6 +30,7 @@ public class MovingObj : MonoBehaviour
 
     void Update()
     {
+        //Move forward
         Vector2 forward;
 
         if(direction == dir.Right)
@@ -35,5 +39,10 @@ public class MovingObj : MonoBehaviour
             forward = new Vector2(-transform.right.x, -transform.right.y);
 
         rb.MovePosition(rb.position + forward * Time.deltaTime * speed);
+
+        //Delete when a certain time passes
+        timer_to_delete += Time.deltaTime;
+        if (timer_to_delete >= time_to_delete)
+            Destroy(gameObject);
     }
 }
