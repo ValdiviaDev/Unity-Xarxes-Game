@@ -16,7 +16,7 @@ public class FrogDeath : MonoBehaviour
     public LayerMask enemy_layer;
 
 
-    public
+    
 
     // Start is called before the first frame update
     void Start()
@@ -56,24 +56,7 @@ public class FrogDeath : MonoBehaviour
             floor = true;
         }
 
-        //if (collision.IsTouchingLayers(enemy_layer))
-        //{
-        //    dead = true;
-        //}
-        //else
-        //{
-        //    if (collision.IsTouchingLayers(water_layer))
-        //    {
-        //        dead = true;
-        //    }
 
-        //    if (collision.IsTouchingLayers(floor_layer))
-        //    {
-        //        dead = false;
-        //    }
-
-
-        //}
     }
 
     private void OnTriggerExit2D(Collider2D collision)
