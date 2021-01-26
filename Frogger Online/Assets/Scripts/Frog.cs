@@ -192,4 +192,41 @@ public class Frog : MonoBehaviour
 
      
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == layer)
+        {
+            Vector2 dist = collision.rigidbody.position - rb.position;
+            animator.SetFloat("speed", 0.0f);
+            animator.SetFloat("h_speed", 0.0f);
+
+            if (dist.magnitude > 0.0f)
+            {
+                //Movement
+                dir_to_move = dir.right;
+                new_pos = rb.position + Vector2.right * dist;
+
+                //Animation
+                animator.SetFloat("speed", 1);
+                aux_time = jump_time;
+
+                //Audio
+                audio.Play();
+            }
+            else
+            {
+                //Movement
+                dir_to_move = dir.left;
+                new_pos = rb.position + Vector2.left * dist;
+
+                //Animation
+                animator.SetFloat("speed", -1);
+                aux_time = jump_time;
+
+                //Audio
+                audio.Play();
+            }
+        }
+    }
 }
