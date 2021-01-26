@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Photon.Pun;
+
 public class MovingObj : MonoBehaviour
 {
     private Rigidbody2D rb;
@@ -30,19 +32,22 @@ public class MovingObj : MonoBehaviour
 
     void Update()
     {
-        //Move forward
-        Vector2 forward;
+        if (PhotonNetwork.IsMasterClient)
+        {
+            //Move forward
+            Vector2 forward;
 
-        if(direction == dir.Right)
-            forward = new Vector2(transform.right.x, transform.right.y);
-        else
-            forward = new Vector2(-transform.right.x, -transform.right.y);
+            if (direction == dir.Right)
+                forward = new Vector2(transform.right.x, transform.right.y);
+            else
+                forward = new Vector2(-transform.right.x, -transform.right.y);
 
-        rb.MovePosition(rb.position + forward * Time.deltaTime * speed);
+            rb.MovePosition(rb.position + forward * Time.deltaTime * speed);
 
-        //Delete when a certain time passes
-        timer_to_delete += Time.deltaTime;
-        if (timer_to_delete >= time_to_delete)
-            Destroy(gameObject);
+            //Delete when a certain time passes
+            timer_to_delete += Time.deltaTime;
+            if (timer_to_delete >= time_to_delete)
+                Destroy(gameObject);
+        }
     }
 }
