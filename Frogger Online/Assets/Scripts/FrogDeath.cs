@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FrogDeath : MonoBehaviour
 {
-
+    private Frog f;
     private Animator animator;
     private bool dead = false;
     private bool floor = false;
@@ -17,6 +17,7 @@ public class FrogDeath : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       f = GetComponent<Frog>();
        animator = GetComponent<Animator>();
     }
 
@@ -27,9 +28,13 @@ public class FrogDeath : MonoBehaviour
         {
             if (dead || (water && !floor && num_of_floors <= 0))
             {
-                Debug.Log("Dead, num floors, "+ num_of_floors);
+                //Debug.Log("Dead, num floors, "+ num_of_floors);
                 animator.SetBool("dead", true);
                 dying = true;
+                if (f)
+                    f.FrogDie();
+                else
+                    Debug.Log("Can't find Frog component!!!");
             }
         }
         
