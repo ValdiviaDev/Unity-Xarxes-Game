@@ -6,13 +6,16 @@ using UnityEngine;
 public class FrogMoveAlongPlatform : MonoBehaviour
 {
 
-
     private void OnTriggerStay2D(Collider2D collision)
     {
+        // This is to move the frog allongside the platform
         if(collision.gameObject.tag == "Platform")
         {
-            if(collision.transform.parent)
-                transform.parent = collision.transform.parent.transform;
+            MoveLakeObj moveLakeObj = collision.gameObject.GetComponent<MoveLakeObj>();
+            if(moveLakeObj.direction == MoveLakeObj.dir.Right)
+                Frog.cum_speed = moveLakeObj.speed;
+            else
+                Frog.cum_speed = -moveLakeObj.speed;
         }
     }
 
@@ -20,7 +23,7 @@ public class FrogMoveAlongPlatform : MonoBehaviour
     {
         if(collision.gameObject.tag == "Platform")
         {
-            transform.parent = null;
+            Frog.cum_speed = 0.0f;
         }
     }
 

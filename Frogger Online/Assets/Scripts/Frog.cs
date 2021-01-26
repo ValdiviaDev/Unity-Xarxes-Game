@@ -43,6 +43,8 @@ public class Frog : MonoBehaviour
 
     private PhotonView photonView;
 
+    public static float cum_speed = 0.0f;
+
     private void Awake()
     {
         photonView = GetComponent<PhotonView>();
@@ -189,8 +191,12 @@ public class Frog : MonoBehaviour
             if (aux_time <= 0.0f)
                 dir_to_move = dir.none;
         }
+        //Here will only move when frog is in a log and the frog isn't moving, else cum speed is 0 so frog won't move
+        else { 
+            Vector2 direction = new Vector2(transform.right.x * cum_speed, transform.right.y * cum_speed);
+            rb.MovePosition(rb.position + direction * Time.fixedDeltaTime);
+        }
 
-     
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

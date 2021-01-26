@@ -6,7 +6,7 @@ using Photon.Pun;
 
 public class MoveLakeObj : MonoBehaviour
 {
-    public static float speed = 1.0f;
+    public float speed = 1.0f;
 
 
     private float timer_to_delete = 0.0f;
@@ -29,10 +29,10 @@ public class MoveLakeObj : MonoBehaviour
             //Move forward
             Vector3 forward;
 
-        if (direction == dir.Right)
-            forward = new Vector3(transform.right.x, transform.right.y);
-        else
-            forward = new Vector3(-transform.right.x, -transform.right.y);
+            if (direction == dir.Right)
+                forward = new Vector3(transform.right.x, transform.right.y);
+            else
+                forward = new Vector3(-transform.right.x, -transform.right.y);
 
         
             transform.position = transform.position + forward * Time.deltaTime * speed;
