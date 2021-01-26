@@ -151,7 +151,7 @@ MonoBehaviour:
   v_dist: 1.05
   layer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   ray_length: 2
 --- !u!114 &5043234186338388487
 MonoBehaviour:

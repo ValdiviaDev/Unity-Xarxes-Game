@@ -17,8 +17,6 @@ namespace Com.Cotxe11.FroggerOnline
 
         #region Public Variables
 
-        private bool isWaitingRoom = true;
-
         [Tooltip("The prefab to use for representing the player")]
         public GameObject player1Prefab;
         public GameObject player2Prefab;
@@ -71,8 +69,6 @@ namespace Com.Cotxe11.FroggerOnline
         {
             Debug.LogFormat("OnPlayerEnteredRoom() {0}", other.NickName); // not seen if you're the player connecting
 
-            isWaitingRoom = (PhotonNetwork.CurrentRoom.PlayerCount == 2);
-
             if (PhotonNetwork.IsMasterClient)
             {
                 Debug.LogFormat("OnPlayerEnteredRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient); // called before OnPlayerLeftRoom
@@ -86,8 +82,6 @@ namespace Com.Cotxe11.FroggerOnline
         public override void OnPlayerLeftRoom(Player other)
         {
             Debug.LogFormat("OnPlayerLeftRoom() {0}", other.NickName); // seen when other disconnects
-
-            isWaitingRoom = (PhotonNetwork.CurrentRoom.PlayerCount == 2);
 
             if (PhotonNetwork.IsMasterClient)
             {
@@ -105,8 +99,7 @@ namespace Com.Cotxe11.FroggerOnline
 
         private void OnLevelWasLoaded(int level)
         {
-            if (isWaitingRoom)
-                return;
+            if (level != 2) return;
 
             if (Frog.LocalPlayerInstance == null)
             {
