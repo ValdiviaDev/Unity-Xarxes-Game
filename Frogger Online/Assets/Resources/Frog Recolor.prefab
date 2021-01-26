@@ -177,15 +177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5f3a3cac122bad42ab134bebef71537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floor_layer:
-    serializedVersion: 2
-    m_Bits: 2048
-  water_layer:
-    serializedVersion: 2
-    m_Bits: 1024
-  enemy_layer:
-    serializedVersion: 2
-    m_Bits: 4096
 --- !u!95 &588187832231286360
 Animator:
   serializedVersion: 3

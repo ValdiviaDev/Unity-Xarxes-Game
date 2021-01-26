@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 6337549548808862802}
   - component: {fileID: -5941800398963308895}
   - component: {fileID: -2913009023551915570}
+  - component: {fileID: 6172249898731919321}
   m_Layer: 0
   m_Name: LogBig_parent
   m_TagString: Untagged
@@ -194,3 +195,26 @@ MonoBehaviour:
   m_SynchronizeRotation: 0
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &6172249898731919321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7791802738873003203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: -2913009023551915570}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

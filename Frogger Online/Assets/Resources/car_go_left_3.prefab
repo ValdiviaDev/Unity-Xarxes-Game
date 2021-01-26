@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3019234473726592590}
   - component: {fileID: 7827507420078283359}
   - component: {fileID: -398702837073006866}
+  - component: {fileID: 4967343557648387743}
   m_Layer: 12
   m_Name: car_go_left_3
   m_TagString: Untagged
@@ -163,3 +164,26 @@ MonoBehaviour:
   m_SynchronizeRotation: 0
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &4967343557648387743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7827507420078283358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: -398702837073006866}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
