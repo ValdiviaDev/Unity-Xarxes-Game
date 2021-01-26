@@ -43,3 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bcb0d1d169a1b342a76d64f1878f800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1Prefab: {fileID: 588187832231286361, guid: ad8a8e7c2aafca54a9101c5e06ab8344,
+    type: 3}
+  player2Prefab: {fileID: 588187832231286361, guid: 67b0f1324630f5e4d843b1797872eaf5,
+    type: 3}
+  player1Spawn: {fileID: 7671338638690512556, guid: 9b5231a209babb743b6dd287ab0845a6,
+    type: 3}
+  player2Spawn: {fileID: 3220733344768564396, guid: 77f2b8ad61edcdd4a8f0e87ead8fddc0,
+    type: 3}

@@ -17,7 +17,7 @@ namespace Com.Cotxe11.FroggerOnline
 
         #region Public Variables
 
-        public bool isWaitingRoom = true;
+        private bool isWaitingRoom = true;
 
         [Tooltip("The prefab to use for representing the player")]
         public GameObject player1Prefab;
@@ -32,29 +32,6 @@ namespace Com.Cotxe11.FroggerOnline
 
         private void Start()
         {
-            if (!isWaitingRoom)
-                return;
-
-            if (player1Prefab == null && player2Prefab == null)
-            {
-                Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'Game Manager'", this);
-            }
-            else
-            {
-                if (Frog.LocalPlayerInstance == null)
-                {
-                    Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
-                    // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-                    if (PhotonNetwork.IsMasterClient)
-                        PhotonNetwork.Instantiate(this.player1Prefab.name, player1Spawn.position, Quaternion.identity, 0);
-                    else
-                        PhotonNetwork.Instantiate(this.player2Prefab.name, player2Spawn.position, Quaternion.identity, 0);
-                }
-                else
-                {
-                    Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
-                }
-            }
         }
 
         #endregion
@@ -126,6 +103,25 @@ namespace Com.Cotxe11.FroggerOnline
 
         #region Private Methods
 
+        private void OnLevelWasLoaded(int level)
+        {
+            if (isWaitingRoom)
+                return;
+
+            if (Frog.LocalPlayerInstance == null)
+            {
+                Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
+                // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
+                if (PhotonNetwork.IsMasterClient)
+                    PhotonNetwork.Instantiate(this.player1Prefab.name, player1Spawn.position, Quaternion.identity, 0);
+                else
+                    PhotonNetwork.Instantiate(this.player2Prefab.name, player2Spawn.position, Quaternion.identity, 0);
+            }
+            else
+            {
+                Frog.LocalPlayerInstance.transform.position = (PhotonNetwork.IsMasterClient) ? player1Spawn.position : player2Spawn.position;
+            }
+        }
 
         void LoadArena()
         {
