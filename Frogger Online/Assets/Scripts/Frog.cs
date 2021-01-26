@@ -39,6 +39,8 @@ public class Frog : MonoBehaviour
     public LayerMask layer;
     public float ray_length = 2.0f;
 
+    public float minRayDistance 0.1f;
+
 
     [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
     public static GameObject LocalPlayerInstance;
@@ -86,8 +88,8 @@ public class Frog : MonoBehaviour
             {
                 //Raycast to look for other frog
                 RaycastHit2D ray = Physics2D.Raycast(transform.position, Vector2.up, ray_length, layer.value);
-
-                if (!ray)
+                
+                if (!ray || ray.distance < minRayDistance)
                 {
                     //Movement
                     dir_to_move = dir.up;
@@ -107,7 +109,7 @@ public class Frog : MonoBehaviour
             {
                 RaycastHit2D ray = Physics2D.Raycast(transform.position, Vector2.down, ray_length, layer.value);
 
-                if (!ray)
+                if (!ray || ray.distance < minRayDistance)
                 {
                     //Movement
                     dir_to_move = dir.down;
@@ -127,7 +129,7 @@ public class Frog : MonoBehaviour
                 //Raycast to look for other frog
                 RaycastHit2D ray = Physics2D.Raycast(transform.position, Vector2.left, ray_length, layer.value);
 
-                if (!ray)
+                if (!ray || ray.distance < minRayDistance)
                 {
                     //Movement
                     dir_to_move = dir.left;
@@ -146,7 +148,7 @@ public class Frog : MonoBehaviour
             {
                 RaycastHit2D ray = Physics2D.Raycast(transform.position, Vector2.right, ray_length, layer.value);
 
-                if (!ray)
+                if (!ray || ray.distance < minRayDistance)
                 {
                     //Movement
                     dir_to_move = dir.right;
