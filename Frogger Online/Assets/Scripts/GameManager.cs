@@ -17,25 +17,20 @@ namespace Com.Cotxe11.FroggerOnline
 
         #region Public Variables
 
-
         [Tooltip("The prefab to use for representing the player")]
-        public GameObject playerPrefab;
+        public GameObject player1Prefab;
+        public GameObject player2Prefab;
 
         public Transform player1Spawn;
         public Transform player2Spawn;
 
-        public LayerMask layerPlayer1;
-        public LayerMask layerPlayer2;
-
-        public Material player1Material;
-        public Material player2Material;
         #endregion
 
         #region MonoBehaviour CallBacks
 
         private void Start()
         {
-            if (playerPrefab == null)
+            if (player1Prefab == null && player2Prefab == null)
             {
                 Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'Game Manager'", this);
             }
@@ -45,19 +40,10 @@ namespace Com.Cotxe11.FroggerOnline
                 {
                     Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
                     // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-                    GameObject tmp;
                     if (PhotonNetwork.IsMasterClient)
-                    {
-                        (tmp=PhotonNetwork.Instantiate(this.playerPrefab.name, player1Spawn.position, Quaternion.identity, 0)).GetComponent<Frog>().layer = layerPlayer2;
-                        tmp.GetComponent<SpriteRenderer>().material = player1Material;
-                        tmp.layer = LayerMask.NameToLayer("Frog1");
-                    }
+                        PhotonNetwork.Instantiate(this.player1Prefab.name, player1Spawn.position, Quaternion.identity, 0);
                     else
-                    {
-                        (tmp=PhotonNetwork.Instantiate(this.playerPrefab.name, player2Spawn.position, Quaternion.identity, 0)).GetComponent<Frog>().layer = layerPlayer1;
-                        tmp.GetComponent<SpriteRenderer>().material = player2Material;
-                        tmp.layer = LayerMask.NameToLayer("Frog2");
-                    }
+                        PhotonNetwork.Instantiate(this.player2Prefab.name, player2Spawn.position, Quaternion.identity, 0);
                 }
                 else
                 {
