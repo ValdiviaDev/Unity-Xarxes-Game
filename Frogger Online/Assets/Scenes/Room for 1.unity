@@ -236,7 +236,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 294.26, y: -192.7}
+  m_AnchoredPosition: {x: -3.5, y: -36.2}
   m_SizeDelta: {x: 163.46228, y: 32.39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &756885164
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1609613846}
         m_MethodName: LeaveRoom
         m_Mode: 1
         m_Arguments:
@@ -589,6 +589,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2516d05aca7c447900a4f01d745081, type: 3}
+--- !u!114 &1609613846 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 900341125881561065, guid: cb2516d05aca7c447900a4f01d745081,
+    type: 3}
+  m_PrefabInstance: {fileID: 1609613845}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bcb0d1d169a1b342a76d64f1878f800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1633356613
 GameObject:
   m_ObjectHideFlags: 0
