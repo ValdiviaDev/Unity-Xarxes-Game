@@ -199,11 +199,11 @@ public class Frog : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == layer)
+        if (collision.gameObject.layer == layer)
         {
-            Vector2 distColl = collision.rigidbody.position - rb.position;
+            Vector2 distColl = collision.GetComponent<Rigidbody2D>().position - rb.position;
             animator.SetFloat("speed", 0.0f);
             animator.SetFloat("h_speed", 0.0f);
 
