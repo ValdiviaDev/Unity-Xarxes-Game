@@ -20,8 +20,6 @@ public class Frog : MonoBehaviour
 
     private float aux_time = 0.0f;
 
-    public GameObject nextPos;
-
     public enum dir
     {
         none,
@@ -89,11 +87,11 @@ public class Frog : MonoBehaviour
                 //Raycast to look for other frog
                 RaycastHit2D ray = Physics2D.Raycast(transform.position, Vector2.up, ray_length, layer.value);
                 
-                if (!ray || ray.distance < minRayDistance)
+                if (!ray || Mathf.Abs(ray.distance) < minRayDistance)
                 {
                     //Movement
                     dir_to_move = dir.up;
-                    nextPos.transform.position = new_pos = rb.position + Vector2.up * v_dist;
+                    new_pos = rb.position + Vector2.up * v_dist;
 
                     //Animation
                     animator.SetFloat("h_speed", 1);
@@ -109,11 +107,11 @@ public class Frog : MonoBehaviour
             {
                 RaycastHit2D ray = Physics2D.Raycast(transform.position, Vector2.down, ray_length, layer.value);
 
-                if (!ray || ray.distance < minRayDistance)
+                if (!ray || Mathf.Abs(ray.distance) < minRayDistance)
                 {
                     //Movement
                     dir_to_move = dir.down;
-                    nextPos.transform.position = new_pos = rb.position + Vector2.down * v_dist;
+                    new_pos = rb.position + Vector2.down * v_dist;
 
                     //Animation
                     animator.SetFloat("h_speed", -1);
@@ -129,11 +127,11 @@ public class Frog : MonoBehaviour
                 //Raycast to look for other frog
                 RaycastHit2D ray = Physics2D.Raycast(transform.position, Vector2.left, ray_length, layer.value);
 
-                if (!ray || ray.distance < minRayDistance)
+                if (!ray || Mathf.Abs(ray.distance) < minRayDistance)
                 {
                     //Movement
                     dir_to_move = dir.left;
-                    nextPos.transform.position = new_pos = rb.position + Vector2.left * dist;
+                    new_pos = rb.position + Vector2.left * dist;
 
                     //Animation
                     animator.SetFloat("speed", -1);
@@ -148,11 +146,11 @@ public class Frog : MonoBehaviour
             {
                 RaycastHit2D ray = Physics2D.Raycast(transform.position, Vector2.right, ray_length, layer.value);
 
-                if (!ray || ray.distance < minRayDistance)
+                if (!ray || Mathf.Abs(ray.distance) < minRayDistance)
                 {
                     //Movement
                     dir_to_move = dir.right;
-                    nextPos.transform.position = new_pos = rb.position + Vector2.right * dist;
+                    new_pos = rb.position + Vector2.right * dist;
 
                     //Animation
                     animator.SetFloat("speed", 1);
