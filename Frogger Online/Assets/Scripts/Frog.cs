@@ -39,7 +39,7 @@ public class Frog : MonoBehaviour
     public LayerMask layer;
     public float ray_length = 2.0f;
 
-    public float minRayDistance 0.1f;
+    public float minRayDistance = 0.1f;
 
 
     [Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
