@@ -26,6 +26,8 @@ namespace Com.Cotxe11.FroggerOnline
 
         #endregion
 
+        private int lastLevelLoaded = 0;
+
         #region MonoBehaviour CallBacks
 
         private void Start()
@@ -83,6 +85,12 @@ namespace Com.Cotxe11.FroggerOnline
         {
             Debug.LogFormat("OnPlayerLeftRoom() {0}", other.NickName); // seen when other disconnects
 
+            if (lastLevelLoaded == 2)
+            {
+                PhotonNetwork.Destroy(Frog.LocalPlayerInstance);
+            }
+
+
             if (PhotonNetwork.IsMasterClient)
             {
                 Debug.LogFormat("OnPlayerLeftRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient); // called before OnPlayerLeftRoom
@@ -99,6 +107,8 @@ namespace Com.Cotxe11.FroggerOnline
 
         private void OnLevelWasLoaded(int level)
         {
+            lastLevelLoaded = level;
+
             if (level != 2) return;
 
             if (Frog.LocalPlayerInstance == null)
