@@ -17,6 +17,8 @@ namespace Com.Cotxe11.FroggerOnline
 
         #region Public Variables
 
+        public bool isWaitingRoom = true;
+
         [Tooltip("The prefab to use for representing the player")]
         public GameObject player1Prefab;
         public GameObject player2Prefab;
@@ -30,6 +32,9 @@ namespace Com.Cotxe11.FroggerOnline
 
         private void Start()
         {
+            if (!isWaitingRoom)
+                return;
+
             if (player1Prefab == null && player2Prefab == null)
             {
                 Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'Game Manager'", this);
@@ -89,6 +94,7 @@ namespace Com.Cotxe11.FroggerOnline
         {
             Debug.LogFormat("OnPlayerEnteredRoom() {0}", other.NickName); // not seen if you're the player connecting
 
+            isWaitingRoom = (PhotonNetwork.CurrentRoom.PlayerCount == 2);
 
             if (PhotonNetwork.IsMasterClient)
             {
@@ -104,6 +110,7 @@ namespace Com.Cotxe11.FroggerOnline
         {
             Debug.LogFormat("OnPlayerLeftRoom() {0}", other.NickName); // seen when other disconnects
 
+            isWaitingRoom = (PhotonNetwork.CurrentRoom.PlayerCount == 2);
 
             if (PhotonNetwork.IsMasterClient)
             {
