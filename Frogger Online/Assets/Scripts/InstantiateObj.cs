@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Photon.Pun;
+
 public class InstantiateObj : MonoBehaviour
 {
     public float spawnDelay = 1.0f;
@@ -40,10 +42,13 @@ public class InstantiateObj : MonoBehaviour
         int randomobj = Random.Range(0, 2);
 
         //Spawns the object
-        if(randomobj == 0)
-            Instantiate(obj_left_1, spawnPoint_l.position, spawnPoint_l.rotation);
-        else
-            Instantiate(obj_left_2, spawnPoint_l.position, spawnPoint_l.rotation);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (randomobj == 0)
+                PhotonNetwork.Instantiate(obj_left_1.name, spawnPoint_l.position, spawnPoint_l.rotation);
+            else
+                PhotonNetwork.Instantiate(obj_left_2.name, spawnPoint_l.position, spawnPoint_l.rotation);
+        }
 
     }
 
@@ -57,12 +62,15 @@ public class InstantiateObj : MonoBehaviour
         int randomobj = Random.Range(0, 3);
 
         //Spawns the object
-        if (randomobj == 0)
-            Instantiate(obj_right_1, spawnPoint_r.position, spawnPoint_r.rotation);
-        else if (randomobj == 1)
-            Instantiate(obj_right_2, spawnPoint_r.position, spawnPoint_r.rotation);
-        else
-            Instantiate(obj_right_3, spawnPoint_r.position, spawnPoint_r.rotation);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (randomobj == 0)
+                PhotonNetwork.Instantiate(obj_right_1.name, spawnPoint_r.position, spawnPoint_r.rotation);
+            else if (randomobj == 1)
+                PhotonNetwork.Instantiate(obj_right_2.name, spawnPoint_r.position, spawnPoint_r.rotation);
+            else
+                PhotonNetwork.Instantiate(obj_right_3.name, spawnPoint_r.position, spawnPoint_r.rotation);
+        }
     }
 
 }

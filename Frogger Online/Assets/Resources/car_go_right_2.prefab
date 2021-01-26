@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7827507420078283358
+--- !u!1 &8474608733426872839
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7827507420078284194}
-  - component: {fileID: 7827507420078283357}
-  - component: {fileID: 7827507420078283356}
-  - component: {fileID: 3019234473726592590}
-  - component: {fileID: 7827507420078283359}
+  - component: {fileID: 8474608733426872835}
+  - component: {fileID: 8474608733426872832}
+  - component: {fileID: 8474608733426872833}
+  - component: {fileID: 5667142731053577276}
+  - component: {fileID: 8474608733426872838}
+  - component: {fileID: 7584895245520398628}
   m_Layer: 12
-  m_Name: car_go_left_2
+  m_Name: car_go_right_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7827507420078284194
+--- !u!4 &8474608733426872835
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7827507420078283358}
+  m_GameObject: {fileID: 8474608733426872839}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 5.723939, y: 5.723939, z: 5.723939}
@@ -34,13 +35,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7827507420078283357
+--- !u!212 &8474608733426872832
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7827507420078283358}
+  m_GameObject: {fileID: 8474608733426872839}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ef35849eaa45a334b92b8ab5e9a6bf1b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 67d5e546cbd397349ba3712e373cb719, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,14 +85,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &7827507420078283356
+--- !u!50 &8474608733426872833
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7827507420078283358}
+  m_GameObject: {fileID: 8474608733426872839}
   m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -105,13 +106,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &3019234473726592590
+--- !u!61 &5667142731053577276
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7827507420078283358}
+  m_GameObject: {fileID: 8474608733426872839}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -131,13 +132,13 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.09}
   m_EdgeRadius: 0
---- !u!114 &7827507420078283359
+--- !u!114 &8474608733426872838
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7827507420078283358}
+  m_GameObject: {fileID: 8474608733426872839}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a30c65cd6cb23c74a92f593ac8f63c3f, type: 3}
@@ -145,4 +146,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 10
   maxSpeed: 11
-  direction: 0
+  direction: 1
+--- !u!114 &7584895245520398628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8474608733426872839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 0
+  m_SynchronizeScale: 0
+  m_UseLocal: 1

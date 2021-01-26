@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7827507420078283356}
   - component: {fileID: 3019234473726592590}
   - component: {fileID: 7827507420078283359}
+  - component: {fileID: -1856717715636962417}
   m_Layer: 12
   m_Name: car_go_left
   m_TagString: Untagged
@@ -146,3 +147,19 @@ MonoBehaviour:
   minSpeed: 10
   maxSpeed: 11
   direction: 0
+--- !u!114 &-1856717715636962417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7827507420078283358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 0
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
