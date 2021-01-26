@@ -197,11 +197,11 @@ public class Frog : MonoBehaviour
     {
         if(collision.gameObject.layer == layer)
         {
-            Vector2 dist = collision.rigidbody.position - rb.position;
+            Vector2 distColl = collision.rigidbody.position - rb.position;
             animator.SetFloat("speed", 0.0f);
             animator.SetFloat("h_speed", 0.0f);
 
-            if (dist.magnitude > 0.0f)
+            if (distColl.magnitude > 0.0f)
             {
                 //Movement
                 dir_to_move = dir.right;

@@ -6,7 +6,7 @@ using Photon.Pun;
 
 public class MoveLakeObj : MonoBehaviour
 {
-    public float speed = 1.0f;
+    public static float speed = 1.0f;
 
 
     private float timer_to_delete = 0.0f;
