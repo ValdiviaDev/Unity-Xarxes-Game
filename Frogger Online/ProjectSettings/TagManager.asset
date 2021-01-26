@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Bullet
   - Platform
+  - Frog1
+  - Frog2
   layers:
   - Default
   - TransparentFX
