@@ -687,10 +687,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2466784204451498312, guid: eeb9faa00fdc43543aeb82caa0c069ce,
+    - target: {fileID: 1575678877313997031, guid: eeb9faa00fdc43543aeb82caa0c069ce,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -41.30005
+      value: 151.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466784204669087513, guid: eeb9faa00fdc43543aeb82caa0c069ce,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2466784204669087513, guid: eeb9faa00fdc43543aeb82caa0c069ce,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2466784204669087515, guid: eeb9faa00fdc43543aeb82caa0c069ce,
         type: 3}
@@ -807,11 +817,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 728312931}
-    - target: {fileID: 2466784206252326393, guid: eeb9faa00fdc43543aeb82caa0c069ce,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LeaveRoom
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eeb9faa00fdc43543aeb82caa0c069ce, type: 3}
 --- !u!1001 &662226254171406681
