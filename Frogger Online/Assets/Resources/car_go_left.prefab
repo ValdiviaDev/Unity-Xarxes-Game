@@ -145,8 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a30c65cd6cb23c74a92f593ac8f63c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: 10
-  maxSpeed: 11
+  minSpeed: 3
+  maxSpeed: 4
   direction: 0
 --- !u!114 &-1856717715636962417
 MonoBehaviour:
@@ -182,7 +182,8 @@ MonoBehaviour:
   observableSearch: 2
   Synchronization: 3
   OwnershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: -1856717715636962417}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
