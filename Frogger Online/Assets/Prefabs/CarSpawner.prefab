@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ab623291e564e449d5b5ce309881d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 1.5
+  spawnDelay: 1
   obj_left_1: {fileID: 8474608733426872839, guid: ec0cb2ad305001d4fb262a74e48daaf0,
     type: 3}
   obj_left_2: {fileID: 8474608733426872839, guid: efe2169311f5b074e9559fa57fcd6def,
@@ -216,3 +216,4 @@ MonoBehaviour:
   - {fileID: 482654365781280421}
   - {fileID: 482654366620394614}
   - {fileID: 482654366783018732}
+  isInLake: 0
