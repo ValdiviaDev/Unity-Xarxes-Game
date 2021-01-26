@@ -16,19 +16,34 @@ public class InstantiateObj : MonoBehaviour
     float nextTimeToSpawn = 0.0f;
     bool spawnRight = true;
 
+    public bool isInLake = false;
+    private int lake_index = 0;
 
     void Update()
     {
-        //Decides when to spawn an object comming from the left
-        if (nextTimeToSpawn <= Time.time)
+        if (PhotonNetwork.IsMasterClient)
         {
-            if (spawnRight)
-                SpawnObjRight();
-            else
-                SpawnObjLeft();
+            if (nextTimeToSpawn <= Time.time)
+            {
+                // Spawn cars
+                if (!isInLake)
+                {
+                    if (spawnRight)
+                        SpawnObjRight();
+                    else
+                        SpawnObjLeft();
 
-            spawnRight = !spawnRight;
-            nextTimeToSpawn = Time.time + spawnDelay;
+                    spawnRight = !spawnRight;
+                }
+
+                // Spawn objects of the lake
+                else
+                {
+                    SpawnObjLake();
+                }
+
+                nextTimeToSpawn = Time.time + spawnDelay;
+            }
         }
     }
 
@@ -73,4 +88,40 @@ public class InstantiateObj : MonoBehaviour
         }
     }
 
+    void SpawnObjLake()
+    {
+        //Decide which object to spawn
+        GameObject to_spawn = null;
+
+        switch (lake_index)
+        {
+            case 0:
+                to_spawn = obj_left_1;
+                break;
+            case 1:
+                to_spawn = obj_left_2;
+                break;
+            case 2:
+                to_spawn = obj_right_1;
+                break;
+            case 3:
+                to_spawn = obj_right_2;
+                break;
+            case 4:
+                to_spawn = obj_right_3;
+                break;
+        }
+
+        // Instantiate the pertinent GameObject
+        if (to_spawn)
+            PhotonNetwork.Instantiate(to_spawn.name, spawnPoints_left[lake_index].position, spawnPoints_left[lake_index].rotation);
+        else
+            Debug.Log("There's no object to spawn on the lake");
+
+        //Update the lake index to decide which object to spawn in the next code iteration
+        if (lake_index == 4)
+            lake_index = 0;
+        else
+            lake_index++;
+    }
 }
