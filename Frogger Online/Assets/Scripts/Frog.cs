@@ -207,9 +207,15 @@ public class Frog : MonoBehaviour
                 dir_to_move = dir.none;
         }
         //Here will only move when frog is in a log and the frog isn't moving, else cum speed is 0 so frog won't move
-        else { 
-            Vector2 direction = new Vector2(transform.right.x * cum_speed, transform.right.y * cum_speed);
-            rb.MovePosition(rb.position + direction * Time.fixedDeltaTime);
+        else {
+
+            //Only permit accumulative movement if the player is inside the window
+            if (transform.position.x > limit_left && cant_move_to != dir.left && transform.position.x < limit_right && cant_move_to != dir.right)
+            {
+                Vector2 direction = new Vector2(transform.right.x * cum_speed, transform.right.y * cum_speed);
+                rb.MovePosition(rb.position + direction * Time.fixedDeltaTime);
+            }
+
         }
 
     }
