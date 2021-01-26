@@ -30,7 +30,7 @@ public class MovingObj : MonoBehaviour
         speed = Random.Range(minSpeed, maxSpeed);
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         if (PhotonNetwork.IsMasterClient)
         {
@@ -42,12 +42,14 @@ public class MovingObj : MonoBehaviour
             else
                 forward = new Vector2(-transform.right.x, -transform.right.y);
 
-            rb.MovePosition(rb.position + forward * Time.deltaTime * speed);
+            rb.MovePosition(rb.position + forward * Time.fixedDeltaTime * speed);
 
             //Delete when a certain time passes
-            timer_to_delete += Time.deltaTime;
+            timer_to_delete += Time.fixedDeltaTime;
             if (timer_to_delete >= time_to_delete)
-                Destroy(gameObject);
+                PhotonNetwork.Destroy(gameObject);
+            
         }
     }
+
 }

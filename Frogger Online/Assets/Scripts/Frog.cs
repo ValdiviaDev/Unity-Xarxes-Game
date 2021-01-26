@@ -65,13 +65,8 @@ public class Frog : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    void Update()
+    private void Update()
     {
-        Debug.DrawLine(transform.position, transform.position + Vector3.up * ray_length);
-        Debug.DrawLine(transform.position, transform.position + Vector3.down * ray_length);
-        Debug.DrawLine(transform.position, transform.position + Vector3.left * ray_length);
-        Debug.DrawLine(transform.position, transform.position + Vector3.right * ray_length);
-
         if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
         {
             return;
@@ -88,7 +83,7 @@ public class Frog : MonoBehaviour
                 //Raycast to look for other frog
                 RaycastHit2D ray = Physics2D.Raycast(transform.position, Vector2.up, ray_length, layer.value);
 
-                if(!ray)
+                if (!ray)
                 {
                     //Movement
                     dir_to_move = dir.up;
@@ -164,9 +159,19 @@ public class Frog : MonoBehaviour
 
         }
 
+
+    }
+
+    void FixedUpdate()
+    {
+        if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+        {
+            return;
+        }
+
         if(aux_time > 0.0f)
         {
-            aux_time -= Time.deltaTime;
+            aux_time -= Time.fixedDeltaTime;
 
             float time_norm = Mathf.Lerp(jump_time, 0.0f, aux_time);
             Vector2 interPos = Vector2.Lerp(transform.position, new_pos, time_norm);
