@@ -24,6 +24,9 @@ namespace Com.Cotxe11.FroggerOnline
         public Transform player1Spawn;
         public Transform player2Spawn;
 
+        public GameObject player1nextPoss;
+        public GameObject player2nextPoss;
+
         #endregion
 
         private int lastLevelLoaded = 0;
@@ -116,9 +119,9 @@ namespace Com.Cotxe11.FroggerOnline
                 Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
                 // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
                 if (PhotonNetwork.IsMasterClient)
-                    PhotonNetwork.Instantiate(this.player1Prefab.name, player1Spawn.position, Quaternion.identity, 0);
+                    PhotonNetwork.Instantiate(this.player1Prefab.name, player1Spawn.position, Quaternion.identity, 0).GetComponent<Frog>().nextPos = player1nextPoss;
                 else
-                    PhotonNetwork.Instantiate(this.player2Prefab.name, player2Spawn.position, Quaternion.identity, 0);
+                    PhotonNetwork.Instantiate(this.player2Prefab.name, player2Spawn.position, Quaternion.identity, 0).GetComponent<Frog>().nextPos = player2nextPoss;
             }
             else
             {

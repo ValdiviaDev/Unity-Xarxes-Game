@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class FrogMoveAlongPlatform : MonoBehaviour
 {
+    private Frog f;
+
+    private void Awake()
+    {
+        f = GetComponent<Frog>();
+    }
+
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -13,9 +20,9 @@ public class FrogMoveAlongPlatform : MonoBehaviour
         {
             MoveLakeObj moveLakeObj = collision.gameObject.GetComponent<MoveLakeObj>();
             if(moveLakeObj.direction == MoveLakeObj.dir.Right)
-                Frog.cum_speed = moveLakeObj.speed;
+                f.cum_speed = moveLakeObj.speed;
             else
-                Frog.cum_speed = -moveLakeObj.speed;
+                f.cum_speed = -moveLakeObj.speed;
         }
     }
 
@@ -23,7 +30,7 @@ public class FrogMoveAlongPlatform : MonoBehaviour
     {
         if(collision.gameObject.tag == "Platform")
         {
-            Frog.cum_speed = 0.0f;
+            f.cum_speed = 0.0f;
         }
     }
 

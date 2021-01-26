@@ -20,6 +20,8 @@ public class Frog : MonoBehaviour
 
     private float aux_time = 0.0f;
 
+    public GameObject nextPos;
+
     public enum dir
     {
         none,
@@ -43,7 +45,7 @@ public class Frog : MonoBehaviour
 
     private PhotonView photonView;
 
-    public static float cum_speed = 0.0f;
+    public float cum_speed = 0.0f;
 
     private void Awake()
     {
@@ -64,7 +66,7 @@ public class Frog : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();        
     }
 
     private void Update()
@@ -89,7 +91,7 @@ public class Frog : MonoBehaviour
                 {
                     //Movement
                     dir_to_move = dir.up;
-                    new_pos = rb.position + Vector2.up * v_dist;
+                    nextPos.transform.position = new_pos = rb.position + Vector2.up * v_dist;
 
                     //Animation
                     animator.SetFloat("h_speed", 1);
@@ -109,7 +111,7 @@ public class Frog : MonoBehaviour
                 {
                     //Movement
                     dir_to_move = dir.down;
-                    new_pos = rb.position + Vector2.down * v_dist;
+                    nextPos.transform.position = new_pos = rb.position + Vector2.down * v_dist;
 
                     //Animation
                     animator.SetFloat("h_speed", -1);
@@ -129,7 +131,7 @@ public class Frog : MonoBehaviour
                 {
                     //Movement
                     dir_to_move = dir.left;
-                    new_pos = rb.position + Vector2.left * dist;
+                    nextPos.transform.position = new_pos = rb.position + Vector2.left * dist;
 
                     //Animation
                     animator.SetFloat("speed", -1);
@@ -148,7 +150,7 @@ public class Frog : MonoBehaviour
                 {
                     //Movement
                     dir_to_move = dir.right;
-                    new_pos = rb.position + Vector2.right * dist;
+                    nextPos.transform.position = new_pos = rb.position + Vector2.right * dist;
 
                     //Animation
                     animator.SetFloat("speed", 1);
@@ -197,42 +199,5 @@ public class Frog : MonoBehaviour
             rb.MovePosition(rb.position + direction * Time.fixedDeltaTime);
         }
 
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == layer)
-        {
-            Vector2 distColl = collision.GetComponent<Rigidbody2D>().position - rb.position;
-            animator.SetFloat("speed", 0.0f);
-            animator.SetFloat("h_speed", 0.0f);
-
-            if (distColl.magnitude > 0.0f)
-            {
-                //Movement
-                dir_to_move = dir.right;
-                new_pos = rb.position + Vector2.right * dist;
-
-                //Animation
-                animator.SetFloat("speed", 1);
-                aux_time = jump_time;
-
-                //Audio
-                audio.Play();
-            }
-            else
-            {
-                //Movement
-                dir_to_move = dir.left;
-                new_pos = rb.position + Vector2.left * dist;
-
-                //Animation
-                animator.SetFloat("speed", -1);
-                aux_time = jump_time;
-
-                //Audio
-                audio.Play();
-            }
-        }
     }
 }
