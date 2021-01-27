@@ -86,4 +86,10 @@ public class FrogDeath : MonoBehaviour
         }
 
     }
+
+
+    public void SetDying(bool set)
+    {
+        dying = set;
+    }
 }

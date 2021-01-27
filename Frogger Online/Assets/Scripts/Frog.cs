@@ -236,6 +236,8 @@ public class Frog : MonoBehaviour
             Debug.Log("FROG RESPAWN");
 
             dead = false;
+            animator.SetBool("dead", false); // TODO Ricardo: put the animator correcly
+            gameObject.GetComponent<FrogDeath>().SetDying(false);
 
             transform.position = new Vector3(transform.position.x, spawn_y, transform.position.z);
         }
