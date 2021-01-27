@@ -159,7 +159,7 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 256
-  ray_length: 1
+  ray_length: 1.5
   minRayDistance: 0.1
   cum_speed: 0
 --- !u!114 &5043234186338388487
