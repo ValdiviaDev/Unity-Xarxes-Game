@@ -24,7 +24,7 @@ public class Frog : MonoBehaviourPunCallbacks, IPunObservable
     private float aux_dead_time = 0.0f;
     public bool dead = false;
     public bool win = false;
-    private float spawn_y = -6.26f;
+    private float spawn_y = -6.264574f;
 
     private bool justJump = false;
 
@@ -265,7 +265,7 @@ public class Frog : MonoBehaviourPunCallbacks, IPunObservable
             Debug.Log("FROG RESPAWN");
 
             dead = false;
-            animator.SetBool("dead", false); // TODO Ricardo: put the animator correcly
+            animator.SetBool("dead", false);
             gameObject.GetComponent<FrogDeath>().SetDying(false);
 
             //This is for the score to not score when the frog dies
