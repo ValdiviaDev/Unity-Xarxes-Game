@@ -155,10 +155,11 @@ MonoBehaviour:
   dead_time: 2
   dead: 0
   win: 0
+  pitch_random_range: 0.025
   layer:
     serializedVersion: 2
     m_Bits: 256
-  ray_length: 2
+  ray_length: 1
   minRayDistance: 0.1
   cum_speed: 0
 --- !u!114 &5043234186338388487
