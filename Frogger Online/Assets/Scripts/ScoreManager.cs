@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
 
     public GameObject frog1;
     public GameObject frog2;
+
+    public GameObject score1, score2;
+    private Text score_text1, score_text2;
 
     private ScoreController sc1;
     private ScoreController sc2;
@@ -20,6 +24,10 @@ public class ScoreManager : MonoBehaviour
         LookForFrog(1);
 
         LookForFrog(2);
+
+        score_text1 = score1.GetComponent<Text>();
+        score_text2 = score2.GetComponent<Text>();
+
     }
 
     // Update is called once per frame
@@ -38,8 +46,18 @@ public class ScoreManager : MonoBehaviour
                 LookForFrog(2);
         }
 
-        
+        // Update labels if needed
+        if (sc1 && sc1.GetIfScoreChanged())
+        {
+            score_text1.text = sc1.score.ToString();
+            sc1.ScoreLabelUpdated();
+        }
 
+        if (sc2 && sc2.GetIfScoreChanged())
+        {
+            score_text2.text = sc2.score.ToString();
+            sc2.ScoreLabelUpdated();
+        }
     }
 
 

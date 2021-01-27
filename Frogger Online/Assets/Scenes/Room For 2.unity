@@ -771,6 +771,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eeb9faa00fdc43543aeb82caa0c069ce, type: 3}
+--- !u!1 &1560934386 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4393980728520453545, guid: eeb9faa00fdc43543aeb82caa0c069ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 1560934385}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1560934387 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9037256122623833725, guid: eeb9faa00fdc43543aeb82caa0c069ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 1560934385}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &662226254171406681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -939,6 +951,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frog1: {fileID: 0}
   frog2: {fileID: 0}
+  score1: {fileID: 1560934387}
+  score2: {fileID: 1560934386}
 --- !u!1001 &3220733344273213902
 PrefabInstance:
   m_ObjectHideFlags: 0
