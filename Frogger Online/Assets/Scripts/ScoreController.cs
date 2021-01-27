@@ -16,21 +16,23 @@ public class ScoreController : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (stream.IsWriting)
         {
-            stream.SendNext(current_step);
             stream.SendNext(score);
         }
         else
         {
             if (!photonView.IsMine)
             {
-                current_step = (int)stream.ReceiveNext();
                 score = (int)stream.ReceiveNext();
+                score_changed = true;
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!photonView.IsMine)
+            return;
+
         if (collision.gameObject.layer == LayerMask.NameToLayer("Start"))
         {
             if (current_step == 1)
