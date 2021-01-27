@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 
@@ -48,6 +49,9 @@ namespace Com.Cotxe11.FroggerOnline
         [Tooltip("The UI Label to inform the user that the connection is in progress")]
         [SerializeField]
         private GameObject progressLabel;
+        [Tooltip("The UI Text to find or create a room with ID")]
+        [SerializeField]
+        private Text roomIDLabel;
 
         #endregion
 
@@ -86,8 +90,15 @@ namespace Com.Cotxe11.FroggerOnline
             // we check if we are connected or not, we join if we are , else we initiate the connection to the server.
             if (PhotonNetwork.IsConnected)
             {
-                // #Critical we need at this point to attempt joining a Random Room. If it fails, we'll get notified in OnJoinRandomFailed() and we'll create one.
-                PhotonNetwork.JoinRandomRoom();
+                if(roomIDLabel.text.Length > 0)
+                {
+                    PhotonNetwork.JoinOrCreateRoom(roomIDLabel.text, new RoomOptions { MaxPlayers = maxPlayersPerRoom }, TypedLobby.Default);
+                }
+                else
+                {
+                    // #Critical we need at this point to attempt joining a Random Room. If it fails, we'll get notified in OnJoinRandomFailed() and we'll create one.
+                    PhotonNetwork.JoinRandomRoom();
+                }
             }
             else
             {
