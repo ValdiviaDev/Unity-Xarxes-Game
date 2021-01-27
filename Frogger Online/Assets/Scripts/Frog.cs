@@ -268,6 +268,9 @@ public class Frog : MonoBehaviourPunCallbacks, IPunObservable
             animator.SetBool("dead", false); // TODO Ricardo: put the animator correcly
             gameObject.GetComponent<FrogDeath>().SetDying(false);
 
+            //This is for the score to not score when the frog dies
+            gameObject.GetComponent<ScoreController>().ResetStep();
+
             transform.position = new Vector3(transform.position.x, spawn_y, transform.position.z);
         }
     }
