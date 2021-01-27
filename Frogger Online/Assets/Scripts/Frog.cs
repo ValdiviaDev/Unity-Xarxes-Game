@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Photon.Pun;
 
-public class Frog : MonoBehaviour
+public class Frog : MonoBehaviourPunCallbacks, IPunObservable
 {
     public int movement_space = 5;
     private Rigidbody2D rb = null;
@@ -25,6 +25,28 @@ public class Frog : MonoBehaviour
     public bool dead = false;
     public bool win = false;
     private float spawn_y = -6.26f;
+
+    private bool justJump = false;
+
+    #region IPunObservable implementation
+
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(justJump);
+            justJump = false;
+        }
+        else
+        {
+            if (!photonView.IsMine && (bool)stream.ReceiveNext())
+                audio.Play();
+        }
+    }
+
+
+    #endregion
 
     public enum dir
     {
@@ -109,6 +131,7 @@ public class Frog : MonoBehaviour
                         //Audio
                         audio.Play();
 
+                        justJump = true;
                     }
                 }
 
@@ -128,6 +151,8 @@ public class Frog : MonoBehaviour
 
                         //Audio
                         audio.Play();
+
+                        justJump = true;
                     }
                 }
 
@@ -148,6 +173,8 @@ public class Frog : MonoBehaviour
 
                         //Audio
                         audio.Play();
+
+                        justJump = true;
                     }
                 }
 
@@ -167,6 +194,8 @@ public class Frog : MonoBehaviour
 
                         //Audio
                         audio.Play();
+
+                        justJump = true;
                     }
                 }
 
