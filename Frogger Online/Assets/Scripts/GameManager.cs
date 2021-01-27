@@ -3,6 +3,7 @@ using System.Collections;
 
 
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
@@ -20,6 +21,9 @@ namespace Com.Cotxe11.FroggerOnline
         [Tooltip("The prefab to use for representing the player")]
         public GameObject player1Prefab;
         public GameObject player2Prefab;
+
+        public GameObject player1NamePrefab;
+        public GameObject player2NamePrefab;
 
         public Transform player1Spawn;
         public Transform player2Spawn;
@@ -126,8 +130,8 @@ namespace Com.Cotxe11.FroggerOnline
                 Frog.LocalPlayerInstance.transform.position = (PhotonNetwork.IsMasterClient) ? player1Spawn.position : player2Spawn.position;
             }
 
-            GameObject.Find(PhotonNetwork.IsMasterClient ? "Player1DisplayName" : "Player2DisplayName").GetComponent<PlayerNameSync>().LinkMyName();
-
+            GameObject uiPref = PhotonNetwork.IsMasterClient ? player1NamePrefab : player2NamePrefab;
+            PhotonNetwork.Instantiate(uiPref.name, uiPref.transform.position, uiPref.transform.rotation).GetComponent<Text>().text = PhotonNetwork.NickName;
         }
 
         void LoadArena()

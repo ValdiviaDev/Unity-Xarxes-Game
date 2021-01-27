@@ -47,5 +47,9 @@ MonoBehaviour:
     type: 3}
   player2Prefab: {fileID: 588187832231286361, guid: 67b0f1324630f5e4d843b1797872eaf5,
     type: 3}
+  player1NamePrefab: {fileID: 8260291388010329951, guid: 54a0c444fd83c1a48b6fc6c9eb53769e,
+    type: 3}
+  player2NamePrefab: {fileID: 2996780544997597018, guid: f3587cb3b19d2044ea5e0aa62d50622f,
+    type: 3}
   player1Spawn: {fileID: 0}
   player2Spawn: {fileID: 0}
