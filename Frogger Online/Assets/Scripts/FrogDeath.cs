@@ -70,6 +70,13 @@ public class FrogDeath : MonoBehaviourPunCallbacks, IPunObservable
                     f.FrogDie();
                 else
                     Debug.Log("Can't find Frog component!!!");
+
+                if (water)
+                {
+                    death_water.Play();
+                    JustDiedWater = true;
+                }
+
             }
         }
         
@@ -87,8 +94,7 @@ public class FrogDeath : MonoBehaviourPunCallbacks, IPunObservable
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("WaterCol"))
         {
-            death_water.Play();
-            JustDiedWater = water = true;
+            water = true;
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("FloorCol"))
