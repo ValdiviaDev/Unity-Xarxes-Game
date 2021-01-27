@@ -17,11 +17,15 @@ public class ScoreController : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(current_step);
+            stream.SendNext(score);
         }
         else
         {
             if (!photonView.IsMine)
+            {
                 current_step = (int)stream.ReceiveNext();
+                score = (int)stream.ReceiveNext();
+            }
         }
     }
 
