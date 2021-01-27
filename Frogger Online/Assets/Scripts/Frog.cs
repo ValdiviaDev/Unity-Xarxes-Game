@@ -6,6 +6,7 @@ public class Frog : MonoBehaviourPunCallbacks, IPunObservable
     public int movement_space = 5;
     private Rigidbody2D rb = null;
     private Animator animator;
+    private Collider2D col;
 
     AudioSource audio;
 
@@ -99,7 +100,8 @@ public class Frog : MonoBehaviourPunCallbacks, IPunObservable
     {
         rb = GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
-        animator = GetComponent<Animator>();        
+        animator = GetComponent<Animator>();
+        col = GetComponent<Collider2D>();
     }
 
     private void Update()
@@ -264,7 +266,7 @@ public class Frog : MonoBehaviourPunCallbacks, IPunObservable
         Debug.Log("FROG DEAD");
 
         dead = true;
-
+        col.enabled = false;
         aux_dead_time = Time.time + dead_time;
     }
 
@@ -273,6 +275,8 @@ public class Frog : MonoBehaviourPunCallbacks, IPunObservable
         if(aux_dead_time < Time.time)
         {
             Debug.Log("FROG RESPAWN");
+
+            col.enabled = true;
 
             dead = false;
             animator.SetBool("dead", false);

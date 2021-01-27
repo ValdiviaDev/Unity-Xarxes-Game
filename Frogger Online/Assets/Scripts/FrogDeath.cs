@@ -63,6 +63,12 @@ public class FrogDeath : MonoBehaviourPunCallbacks, IPunObservable
         {
             if (dead || (water && !floor && num_of_floors <= 0))
             {
+                if (water)
+                {
+                    death_water.Play();
+                    JustDiedWater = true;
+                }
+
                 //Debug.Log("Dead, num floors, "+ num_of_floors);
                 animator.SetBool("dead", true);
                 dying = true;
@@ -70,12 +76,6 @@ public class FrogDeath : MonoBehaviourPunCallbacks, IPunObservable
                     f.FrogDie();
                 else
                     Debug.Log("Can't find Frog component!!!");
-
-                if (water)
-                {
-                    death_water.Play();
-                    JustDiedWater = true;
-                }
 
             }
         }
