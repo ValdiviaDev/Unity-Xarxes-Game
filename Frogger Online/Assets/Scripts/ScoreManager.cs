@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -15,8 +16,12 @@ public class ScoreManager : MonoBehaviour
     private ScoreController sc1;
     private ScoreController sc2;
 
+    public EndGameScript endGame;
+
     private float repeat_search_time = 0.0f;
     private float period = 3.0f;
+
+    public int WIN_POINTS = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -51,12 +56,22 @@ public class ScoreManager : MonoBehaviour
         {
             score_text1.text = sc1.score.ToString();
             sc1.ScoreLabelUpdated();
+
+            if(sc1.score == WIN_POINTS)
+            {
+                endGame.EndGame(PhotonNetwork.IsMasterClient ? "You\nWIN" : "You\nlose...");
+            }
         }
 
         if (sc2 && sc2.GetIfScoreChanged())
         {
             score_text2.text = sc2.score.ToString();
             sc2.ScoreLabelUpdated();
+
+            if (sc2.score == WIN_POINTS)
+            {
+                endGame.EndGame(!PhotonNetwork.IsMasterClient ? "You\nWIN" : "You\nlose...");
+            }
         }
     }
 
