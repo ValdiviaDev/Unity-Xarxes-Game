@@ -28,6 +28,8 @@ public class Frog : MonoBehaviourPunCallbacks, IPunObservable
 
     private bool justJump = false;
 
+    public float pitch_random_range = 0.025f;
+
     #region IPunObservable implementation
 
 
@@ -41,7 +43,10 @@ public class Frog : MonoBehaviourPunCallbacks, IPunObservable
         else
         {
             if (!photonView.IsMine && (bool)stream.ReceiveNext())
+            {
+                audio.pitch = Random.Range(1 - pitch_random_range, 1 + pitch_random_range);
                 audio.Play();
+            }
         }
     }
 
@@ -129,6 +134,7 @@ public class Frog : MonoBehaviourPunCallbacks, IPunObservable
                         aux_time = jump_time;
 
                         //Audio
+                        audio.pitch = Random.Range(1 - pitch_random_range, 1 + pitch_random_range);
                         audio.Play();
 
                         justJump = true;
@@ -150,6 +156,7 @@ public class Frog : MonoBehaviourPunCallbacks, IPunObservable
                         aux_time = jump_time;
 
                         //Audio
+                        audio.pitch = Random.Range(1 - pitch_random_range, 1 + pitch_random_range);
                         audio.Play();
 
                         justJump = true;
@@ -172,6 +179,7 @@ public class Frog : MonoBehaviourPunCallbacks, IPunObservable
                         aux_time = jump_time;
 
                         //Audio
+                        audio.pitch = Random.Range(1 - pitch_random_range, 1 + pitch_random_range);
                         audio.Play();
 
                         justJump = true;
@@ -193,7 +201,9 @@ public class Frog : MonoBehaviourPunCallbacks, IPunObservable
                         aux_time = jump_time;
 
                         //Audio
+                        audio.pitch = Random.Range(1 - pitch_random_range, 1 + pitch_random_range);
                         audio.Play();
+                        
 
                         justJump = true;
                     }
