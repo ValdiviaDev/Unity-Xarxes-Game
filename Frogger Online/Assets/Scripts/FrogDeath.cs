@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
-public class FrogDeath : MonoBehaviour
+public class FrogDeath : MonoBehaviourPunCallbacks, IPunObservable
 {
     private Frog f;
     private Animator animator;
@@ -10,9 +11,43 @@ public class FrogDeath : MonoBehaviour
     private bool floor = false;
     private bool water = false;
     private bool dying = false;
+    private bool JustDiedCar = false;
+    private bool JustDiedWater = false;
 
     private int num_of_floors = 0; //Counts num of floor colliders the frog collides with. If <=0 and touching water, then the frog dies
 
+    [SerializeField] private AudioSource death_car;
+    [SerializeField] private AudioSource death_water;
+
+    #region IPunObservable implementation
+
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(JustDiedCar);
+            JustDiedCar = false;
+
+            stream.SendNext(JustDiedWater);
+            JustDiedWater = false;
+        }
+        else
+        {
+            if (!photonView.IsMine)
+            {
+                if ((bool)stream.ReceiveNext())
+                    death_car.Play();
+
+                if ((bool)stream.ReceiveNext())
+                    death_water.Play();
+            }
+              
+        }
+    }
+
+
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -46,12 +81,14 @@ public class FrogDeath : MonoBehaviour
         
         if(collision.gameObject.layer == LayerMask.NameToLayer("EnemyCol"))
         {
-            dead = true;
+            death_car.Play();
+            JustDiedCar = dead = true;
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("WaterCol"))
         {
-            water = true;
+            death_water.Play();
+            JustDiedWater = water = true;
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("FloorCol"))
