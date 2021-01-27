@@ -92,7 +92,7 @@ namespace Com.Cotxe11.FroggerOnline
             {
                 if(roomIDLabel.text.Length > 0)
                 {
-                    PhotonNetwork.JoinOrCreateRoom(roomIDLabel.text, new RoomOptions { MaxPlayers = maxPlayersPerRoom, IsVisible = false, IsOpen = false }, TypedLobby.Default);
+                    PhotonNetwork.JoinOrCreateRoom(roomIDLabel.text, new RoomOptions { MaxPlayers = maxPlayersPerRoom, IsVisible = false }, TypedLobby.Default);
                 }
                 else
                 {
@@ -123,8 +123,16 @@ namespace Com.Cotxe11.FroggerOnline
             // we don't want to do anything.
             if (isConnecting)
             {
-                // #Critical: The first we try to do is to join a potential existing room. If there is, good, else, we'll be called back with OnJoinRandomFailed()
-                PhotonNetwork.JoinRandomRoom();
+                if (roomIDLabel.text.Length > 0)
+                {
+                    PhotonNetwork.JoinOrCreateRoom(roomIDLabel.text, new RoomOptions { MaxPlayers = maxPlayersPerRoom, IsVisible = false }, TypedLobby.Default);
+                }
+                else
+                {
+                    // #Critical we need at this point to attempt joining a Random Room. If it fails, we'll get notified in OnJoinRandomFailed() and we'll create one.
+                    PhotonNetwork.JoinRandomRoom();
+                }
+
                 isConnecting = false;
             }
         }
@@ -145,7 +153,7 @@ namespace Com.Cotxe11.FroggerOnline
             Debug.Log("PUN Basics Tutorial/Launcher:OnJoinRandomFailed() was called by PUN. No random room available, so we create one.\nCalling: PhotonNetwork.CreateRoom");
 
             // #Critical: we failed to join a random room, maybe none exists or they are all full. No worries, we create a new room.
-            PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = maxPlayersPerRoom });
+            if(roomIDLabel.text.Length == 0) PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = maxPlayersPerRoom });
         }
 
         public override void OnJoinedRoom()
