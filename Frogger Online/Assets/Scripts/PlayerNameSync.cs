@@ -12,8 +12,7 @@ public class PlayerNameSync : MonoBehaviourPunCallbacks, IPunObservable
     private void Awake()
     {
         displayName = GetComponent<Text>();
-
-        gameObject.GetComponent<RectTransform>().parent = GameObject.Find("Panel").GetComponent<RectTransform>().parent;
+        GetComponent<RectTransform>().parent = GameObject.Find("Panel").GetComponent<RectTransform>().parent;
     }
 
     #region IPunObservable implementation

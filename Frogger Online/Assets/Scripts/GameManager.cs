@@ -131,7 +131,10 @@ namespace Com.Cotxe11.FroggerOnline
             }
 
             GameObject uiPref = PhotonNetwork.IsMasterClient ? player1NamePrefab : player2NamePrefab;
-            PhotonNetwork.Instantiate(uiPref.name, uiPref.transform.position, uiPref.transform.rotation).GetComponent<Text>().text = PhotonNetwork.NickName;
+            Vector3 prePos = uiPref.GetComponent<RectTransform>().position;
+            GameObject tmp = PhotonNetwork.Instantiate(uiPref.name, Vector3.zero, Quaternion.identity);
+            tmp.GetComponent<RectTransform>().position = prePos;
+            tmp.GetComponent<Text>().text = PhotonNetwork.NickName;
         }
 
         void LoadArena()
