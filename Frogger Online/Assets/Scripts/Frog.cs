@@ -272,6 +272,8 @@ public class Frog : MonoBehaviourPunCallbacks, IPunObservable
             gameObject.GetComponent<ScoreController>().ResetStep();
 
             transform.position = new Vector3(transform.position.x, spawn_y, transform.position.z);
+
+            animator.Play("Base Layer.frogs_idle");
         }
     }
 }
