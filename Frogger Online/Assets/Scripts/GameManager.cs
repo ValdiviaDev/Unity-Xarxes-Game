@@ -28,8 +28,7 @@ namespace Com.Cotxe11.FroggerOnline
         public Transform player1Spawn;
         public Transform player2Spawn;
 
-        bool p1Rematch = false;
-        bool p2Rematch = false;
+        bool wantRematch = false;
 
         #endregion
 
@@ -42,39 +41,20 @@ namespace Com.Cotxe11.FroggerOnline
         {
             if (stream.IsWriting)
             {
-                stream.SendNext(PhotonNetwork.IsMasterClient ? p1Rematch : p2Rematch);
+                stream.SendNext(wantRematch);
             }
             else
             {
-                if (!photonView.IsMine)
+                wantRematch = (bool)stream.ReceiveNext();
+                if (PhotonNetwork.IsMasterClient && wantRematch)
                 {
-                    if (PhotonNetwork.IsMasterClient)
-                    {
-                        p2Rematch = (bool)stream.ReceiveNext();
-                    }
-                    else p1Rematch = (bool)stream.ReceiveNext();
+                    PhotonNetwork.LoadLevel(3);
                 }
-
             }
         }
 
 
         #endregion
-
-        #region MonoBehaviour CallBacks
-
-        public void Update()
-        {
-            if (PhotonNetwork.IsMasterClient && p1Rematch && p2Rematch)
-            {
-                PhotonNetwork.LoadLevel("ReMatch");
-                p1Rematch = p2Rematch = false;
-            }
-        }
-
-        #endregion
-
-
 
         #region Photon Callbacks
 
@@ -90,7 +70,6 @@ namespace Com.Cotxe11.FroggerOnline
 
         #endregion
 
-
         #region Public Methods
 
 
@@ -101,8 +80,12 @@ namespace Com.Cotxe11.FroggerOnline
 
         public void Rematch()
         {
-            if (PhotonNetwork.IsMasterClient) p1Rematch = true;
-            else p2Rematch = true;
+            if (PhotonNetwork.IsMasterClient)
+            {
+                PhotonNetwork.LoadLevel(3);
+            }
+            else
+                wantRematch = true;
         }
 
 
@@ -153,10 +136,6 @@ namespace Com.Cotxe11.FroggerOnline
         {
             lastLevelLoaded = level;
 
-            if(level == 3) {
-                LoadArena();
-                return;
-            }
 
             if (level != 2) return;
 
