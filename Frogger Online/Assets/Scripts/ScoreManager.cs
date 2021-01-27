@@ -59,7 +59,7 @@ public class ScoreManager : MonoBehaviour
 
             if(sc1.score == WIN_POINTS)
             {
-                endGame.EndGame(PhotonNetwork.IsMasterClient ? "You\nWIN" : "You\nlose...");
+                endGame.EndGame(PhotonNetwork.IsMasterClient ? "You\nWIN" : "You\nlose");
             }
         }
 
@@ -70,7 +70,7 @@ public class ScoreManager : MonoBehaviour
 
             if (sc2.score == WIN_POINTS)
             {
-                endGame.EndGame(!PhotonNetwork.IsMasterClient ? "You\nWIN" : "You\nlose...");
+                endGame.EndGame(!PhotonNetwork.IsMasterClient ? "You\nWIN" : "You\nlose");
             }
         }
     }

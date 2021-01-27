@@ -51,11 +51,6 @@ namespace Com.Cotxe11.FroggerOnline
                     if (PhotonNetwork.IsMasterClient)
                     {
                         p2Rematch = (bool)stream.ReceiveNext();
-
-                        if(p1Rematch && p2Rematch)
-                        {
-                            PhotonNetwork.LoadLevel("Room for " + PhotonNetwork.CurrentRoom.PlayerCount);
-                        }
                     }
                     else p1Rematch = (bool)stream.ReceiveNext();
                 }
@@ -68,8 +63,13 @@ namespace Com.Cotxe11.FroggerOnline
 
         #region MonoBehaviour CallBacks
 
-        private void Start()
+        public void Update()
         {
+            if (PhotonNetwork.IsMasterClient && p1Rematch && p2Rematch)
+            {
+                PhotonNetwork.LoadLevel("ReMatch");
+                p1Rematch = p2Rematch = false;
+            }
         }
 
         #endregion
@@ -101,8 +101,8 @@ namespace Com.Cotxe11.FroggerOnline
 
         public void Rematch()
         {
-            if (PhotonNetwork.IsMasterClient) p1Rematch = !p1Rematch;
-            else p2Rematch = !p2Rematch;
+            if (PhotonNetwork.IsMasterClient) p1Rematch = true;
+            else p2Rematch = true;
         }
 
 
@@ -152,6 +152,11 @@ namespace Com.Cotxe11.FroggerOnline
         private void OnLevelWasLoaded(int level)
         {
             lastLevelLoaded = level;
+
+            if(level == 3) {
+                LoadArena();
+                return;
+            }
 
             if (level != 2) return;
 
