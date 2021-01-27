@@ -131,9 +131,19 @@ namespace Com.Cotxe11.FroggerOnline
             }
 
             GameObject uiPref = PhotonNetwork.IsMasterClient ? player1NamePrefab : player2NamePrefab;
-            Vector3 prePos = uiPref.GetComponent<RectTransform>().position;
+            RectTransform preRectTransform = uiPref.GetComponent<RectTransform>();
             GameObject tmp = PhotonNetwork.Instantiate(uiPref.name, Vector3.zero, Quaternion.identity);
-            tmp.GetComponent<RectTransform>().position = prePos;
+
+            // Get the source and target RectTransform components
+            RectTransform rectTransform = tmp.GetComponent<RectTransform>();
+
+            // These four properties are to be copied
+            rectTransform.anchorMin = preRectTransform.anchorMin;
+            rectTransform.anchorMax = preRectTransform.anchorMax;
+            rectTransform.anchoredPosition = preRectTransform.anchoredPosition;
+            rectTransform.sizeDelta = preRectTransform.sizeDelta;
+
+           // tmp.GetComponent<RectTransform>().position = prePos;
             tmp.GetComponent<Text>().text = PhotonNetwork.NickName;
         }
 
