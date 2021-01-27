@@ -12,6 +12,15 @@ public class ScoreController : MonoBehaviourPunCallbacks, IPunObservable
 
     private bool score_changed = false;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q)) if (photonView.IsMine)
+            {
+                score = 5;
+                score_changed = true;
+            }
+    }
+
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
