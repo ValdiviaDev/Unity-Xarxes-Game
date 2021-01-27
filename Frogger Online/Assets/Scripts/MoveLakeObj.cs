@@ -8,10 +8,6 @@ public class MoveLakeObj : MonoBehaviour
 {
     public float speed = 1.0f;
 
-
-    private float timer_to_delete = 0.0f;
-    private float time_to_delete = 120.0f;
-
     public enum dir
     {
         Left,
@@ -37,11 +33,7 @@ public class MoveLakeObj : MonoBehaviour
         
             transform.position = transform.position + forward * Time.deltaTime * speed;
 
-
-            //Delete when a certain time passes
-            timer_to_delete += Time.fixedDeltaTime;
-            if (timer_to_delete >= time_to_delete)
-                PhotonNetwork.Destroy(gameObject);
         }
     }
+
 }
