@@ -145,10 +145,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement_space: 1
-  limit_down: -6
+  limit_down: -6.264574
   limit_left: -8.73
   limit_right: 6.25
-  limit_up: 6
+  limit_up: 5.857577
   jump_time: 0.25
   dist: 1.05
   v_dist: 1.05
