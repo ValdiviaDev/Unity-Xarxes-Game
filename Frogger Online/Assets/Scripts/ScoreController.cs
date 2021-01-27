@@ -2,13 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Photon.Pun;
 
-public class ScoreController : MonoBehaviour
+
+public class ScoreController : MonoBehaviourPunCallbacks, IPunObservable
 {
     public int score = 0;
     private int current_step = 0; //0: just begun lap, need to touch finish. 1: touched finish (top), need to go back to start
 
     private bool score_changed = false;
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(current_step);
+        }
+        else
+        {
+            if (!photonView.IsMine)
+                current_step = (int)stream.ReceiveNext();
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
