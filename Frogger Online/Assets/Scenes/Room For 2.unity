@@ -774,6 +774,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 508680811417735622, guid: eeb9faa00fdc43543aeb82caa0c069ce,
+        type: 3}
+      propertyPath: in_game_music
+      value: 
+      objectReference: {fileID: 1826804922}
     - target: {fileID: 1634476749981464768, guid: eeb9faa00fdc43543aeb82caa0c069ce,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
