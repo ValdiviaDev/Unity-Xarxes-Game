@@ -92,7 +92,7 @@ namespace Com.Cotxe11.FroggerOnline
             {
                 if(roomIDLabel.text.Length > 0)
                 {
-                    PhotonNetwork.JoinOrCreateRoom(roomIDLabel.text, new RoomOptions { MaxPlayers = maxPlayersPerRoom, IsVisible = false }, TypedLobby.Default);
+                    PhotonNetwork.JoinOrCreateRoom(roomIDLabel.text, new RoomOptions { MaxPlayers = maxPlayersPerRoom, IsVisible = false, IsOpen = false }, TypedLobby.Default);
                 }
                 else
                 {
