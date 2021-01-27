@@ -106,13 +106,13 @@ public class Frog : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Update()
     {
+        if (dead) CheckDeath();
+
         if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
         {
             return;
         }
 
-        
-        
         if (aux_time <= 0.0f)
         {
             animator.SetFloat("speed", 0.0f);
@@ -211,10 +211,6 @@ public class Frog : MonoBehaviourPunCallbacks, IPunObservable
                     }
                 }
 
-            }
-            else
-            {
-                CheckDeath();
             }
 
         }
