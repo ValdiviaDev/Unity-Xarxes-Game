@@ -185,8 +185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5f3a3cac122bad42ab134bebef71537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car_death: {fileID: 5448127525811080788}
-  water_death: {fileID: 1913740412806160818}
+  death_car: {fileID: 5448127525811080788}
+  death_water: {fileID: 1913740412806160818}
 --- !u!95 &588187832231286360
 Animator:
   serializedVersion: 3
@@ -313,7 +313,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c0d06549772d897499297fd6b3194a4e, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -409,7 +409,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8724899cd824b554088a9331e7d2ab26, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -514,8 +514,10 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 588187832231286363}
+  - {fileID: 3022261505358579882}
   - {fileID: 3273821743356244656}
   - {fileID: 2101639294473525007}
+  - {fileID: 7983081811323081800}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
