@@ -13,7 +13,7 @@ using Photon.Realtime;
 
 namespace Com.Cotxe11.FroggerOnline
 {
-    public class GameManager : MonoBehaviourPunCallbacks
+    public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     {
 
         #region Public Variables
@@ -28,9 +28,43 @@ namespace Com.Cotxe11.FroggerOnline
         public Transform player1Spawn;
         public Transform player2Spawn;
 
+        bool p1Rematch = false;
+        bool p2Rematch = false;
+
         #endregion
 
         private int lastLevelLoaded = 0;
+
+        #region IPunObservable implementation
+
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+                stream.SendNext(PhotonNetwork.IsMasterClient ? p1Rematch : p2Rematch);
+            }
+            else
+            {
+                if (!photonView.IsMine)
+                {
+                    if (PhotonNetwork.IsMasterClient)
+                    {
+                        p2Rematch = (bool)stream.ReceiveNext();
+
+                        if(p1Rematch && p2Rematch)
+                        {
+                            PhotonNetwork.LoadLevel("Room for " + PhotonNetwork.CurrentRoom.PlayerCount);
+                        }
+                    }
+                    else p1Rematch = (bool)stream.ReceiveNext();
+                }
+
+            }
+        }
+
+
+        #endregion
 
         #region MonoBehaviour CallBacks
 
@@ -63,6 +97,12 @@ namespace Com.Cotxe11.FroggerOnline
         public void LeaveRoom()
         {
             PhotonNetwork.LeaveRoom();
+        }
+
+        public void Rematch()
+        {
+            if (PhotonNetwork.IsMasterClient) p1Rematch = !p1Rematch;
+            else p2Rematch = !p2Rematch;
         }
 
 

@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ab623291e564e449d5b5ce309881d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 2
+  spawnDelay: 1.5
   obj_left_1: {fileID: 7791802738873003203, guid: f0b16742e2a57714b9d6b23ca8a462cf,
     type: 3}
   obj_left_2: {fileID: 7791802738873003203, guid: 6a5756bc05573814fab481a833bfc993,
