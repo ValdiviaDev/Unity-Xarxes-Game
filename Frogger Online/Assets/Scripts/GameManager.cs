@@ -111,6 +111,7 @@ namespace Com.Cotxe11.FroggerOnline
 
             if (level != 2) return;
 
+
             if (Frog.LocalPlayerInstance == null)
             {
                 Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
@@ -124,6 +125,9 @@ namespace Com.Cotxe11.FroggerOnline
             {
                 Frog.LocalPlayerInstance.transform.position = (PhotonNetwork.IsMasterClient) ? player1Spawn.position : player2Spawn.position;
             }
+
+            GameObject.Find(PhotonNetwork.IsMasterClient ? "Player1DisplayName" : "Player2DisplayName").GetComponent<PlayerNameSync>().LinkMyName();
+
         }
 
         void LoadArena()
