@@ -14,7 +14,7 @@ public class ScoreController : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && photonView.IsMine)
+        if (Input.GetKeyDown(KeyCode.Q)) if(photonView.IsMine)
         {
             score = 5;
             score_changed = true;

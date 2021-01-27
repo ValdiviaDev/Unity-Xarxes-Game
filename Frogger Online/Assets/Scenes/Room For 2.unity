@@ -387,6 +387,16 @@ PrefabInstance:
       propertyPath: player2Spawn
       value: 
       objectReference: {fileID: 646362466}
+    - target: {fileID: 1466168293041719112, guid: cb2516d05aca7c447900a4f01d745081,
+        type: 3}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466168293041719112, guid: cb2516d05aca7c447900a4f01d745081,
+        type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5275008348451441446, guid: cb2516d05aca7c447900a4f01d745081,
         type: 3}
       propertyPath: m_Name
@@ -764,36 +774,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 718061612807381327, guid: eeb9faa00fdc43543aeb82caa0c069ce,
-        type: 3}
-      propertyPath: m_Name
-      value: Player1DisplayName
-      objectReference: {fileID: 0}
-    - target: {fileID: 1575678877313997031, guid: eeb9faa00fdc43543aeb82caa0c069ce,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 151.8
-      objectReference: {fileID: 0}
     - target: {fileID: 1634476749981464768, guid: eeb9faa00fdc43543aeb82caa0c069ce,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 728312931}
-    - target: {fileID: 1634476749981464768, guid: eeb9faa00fdc43543aeb82caa0c069ce,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Rematch
-      objectReference: {fileID: 0}
-    - target: {fileID: 2466784204669087513, guid: eeb9faa00fdc43543aeb82caa0c069ce,
-        type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2466784204669087513, guid: eeb9faa00fdc43543aeb82caa0c069ce,
-        type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2466784204669087515, guid: eeb9faa00fdc43543aeb82caa0c069ce,
         type: 3}
       propertyPath: m_Name
@@ -909,31 +894,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 728312931}
-    - target: {fileID: 3870417408775469422, guid: eeb9faa00fdc43543aeb82caa0c069ce,
-        type: 3}
-      propertyPath: viewIdField
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4205222617390805712, guid: eeb9faa00fdc43543aeb82caa0c069ce,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 728312931}
-    - target: {fileID: 4205222617390805712, guid: eeb9faa00fdc43543aeb82caa0c069ce,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LeaveRoom
-      objectReference: {fileID: 0}
-    - target: {fileID: 5658928530789917070, guid: eeb9faa00fdc43543aeb82caa0c069ce,
-        type: 3}
-      propertyPath: m_Name
-      value: Player2DisplayName
-      objectReference: {fileID: 0}
-    - target: {fileID: 6233881440536571787, guid: eeb9faa00fdc43543aeb82caa0c069ce,
-        type: 3}
-      propertyPath: viewIdField
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eeb9faa00fdc43543aeb82caa0c069ce, type: 3}
 --- !u!1 &1560934386 stripped

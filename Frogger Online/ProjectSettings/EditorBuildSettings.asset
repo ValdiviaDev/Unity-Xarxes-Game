@@ -14,7 +14,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Room For 2.unity
     guid: 466c6306f7336c046abc7dd1164506f2
-  - enabled: 1
-    path: Assets/Scenes/ReMatch.unity
-    guid: a47e026fe67028c4daeac13d7791e816
   m_configObjects: {}

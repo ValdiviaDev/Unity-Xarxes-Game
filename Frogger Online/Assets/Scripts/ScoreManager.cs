@@ -93,4 +93,15 @@ public class ScoreManager : MonoBehaviour
                 break;
         }
     }
+
+    public void Rematch()
+    {
+        sc1.score = 0;
+        score_text1.text = sc1.score.ToString();
+        sc1.ResetStep();
+
+        sc2.score = 0;
+        score_text2.text = sc2.score.ToString();
+        sc2.ResetStep();
+    }
 }

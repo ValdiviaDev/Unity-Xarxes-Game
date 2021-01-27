@@ -28,11 +28,11 @@ namespace Com.Cotxe11.FroggerOnline
         public Transform player1Spawn;
         public Transform player2Spawn;
 
-        bool wantRematch = false;
-
         #endregion
 
         private int lastLevelLoaded = 0;
+
+        private bool justRemath = false;
 
         #region IPunObservable implementation
 
@@ -41,14 +41,16 @@ namespace Com.Cotxe11.FroggerOnline
         {
             if (stream.IsWriting)
             {
-                stream.SendNext(wantRematch);
+                stream.SendNext(justRemath);
+                justRemath = false;
             }
             else
             {
-                wantRematch = (bool)stream.ReceiveNext();
-                if (PhotonNetwork.IsMasterClient && wantRematch)
+                if ((bool)stream.ReceiveNext())
                 {
-                    PhotonNetwork.LoadLevel(3);
+                    GameObject.Find("EndGame").GetComponent<EndGameScript>().Rematch();
+                    GameObject.Find("ScoreController").GetComponent<ScoreManager>().Rematch();
+                    Frog.LocalPlayerInstance.transform.position = (PhotonNetwork.IsMasterClient) ? player1Spawn.position : player2Spawn.position;
                 }
             }
         }
@@ -82,10 +84,11 @@ namespace Com.Cotxe11.FroggerOnline
         {
             if (PhotonNetwork.IsMasterClient)
             {
-                PhotonNetwork.LoadLevel(3);
+                GameObject.Find("EndGame").GetComponent<EndGameScript>().Rematch();
+                GameObject.Find("ScoreController").GetComponent<ScoreManager>().Rematch();
+                Frog.LocalPlayerInstance.transform.position = (PhotonNetwork.IsMasterClient) ? player1Spawn.position : player2Spawn.position;
+                justRemath = true;
             }
-            else
-                wantRematch = true;
         }
 
 

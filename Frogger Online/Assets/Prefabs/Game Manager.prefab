@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7458285911720521410}
   - component: {fileID: 900341125881561065}
-  - component: {fileID: 6211207141203688455}
+  - component: {fileID: 1466168293041719112}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -54,7 +54,7 @@ MonoBehaviour:
     type: 3}
   player1Spawn: {fileID: 0}
   player2Spawn: {fileID: 0}
---- !u!114 &6211207141203688455
+--- !u!114 &1466168293041719112
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,8 +72,7 @@ MonoBehaviour:
   observableSearch: 2
   Synchronization: 3
   OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 900341125881561065}
+  ObservedComponents: []
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
